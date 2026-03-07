@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio BTS SIO⎟ Aimé Diantalou-samba</title>
+    <meta name="description" content="Portfolio de Aimé Diantalou-samba - Etudiant en BTS SIO (Services Informatiques aux Organisations) option SLAM (Solutions Logicielles et Application Métier)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+      <!--  la séquence de démarrage (une fois par session) -->
+    <script>
+        if (!sessionStorage.getItem('bootCompleted')) {
+            sessionStorage.setItem('bootCompleted', 'true');
+            window.location.href = 'boot-sequence.html';
+        }
+    </script>
+    <!--  fin -->
+</head>
+<body>
+    <!-- BOUTON TOGGLE HEADER -->
+<button type="button" class="header-toggle" id="headerToggle" title="Ouvrir/Fermer le menu" aria-label="Ouvrir/Fermer le menu">
+    <i class="fas fa-chevron-down"></i>
+</button>
+
+<!-- HEADER -->
+<header id="header">
+    <div class="container">
+          <a href="logo.png" class="logo">
+            <img src="logo.png" alt="Green IT Veille" class="logo-img">
+        </a>
+        <!-- BOUTON BURGER -->
+        <button type="button" class="burger-toggle" id="burgerToggle" title="Menu" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- NAVIGATION -->
+        <nav id="navbar">
+            <ul>
+                 <li><a href="index.html#hero" class="nav-link active">Accueil</a></li>
+                <li><a href="index.html#about" class="nav-link">A propos</a></li>
+                <li><a href="index.html#resume" class="nav-link">Parcours</a></li>
+                <li><a href="index.html#skills" class="nav-link">Compétences</a></li>
+                <li><a href="veille.html" class="nav-link">Veille Technologique</a></li>
+                <li class="dropdown">
+                    <a href="#">Épreuves <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="epreuve-e4.html">Épreuve E4</a></li>
+                        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+                        <li><a href="certifications.html">Certifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="loading-game.html?to=projets.html" class="nav-btn">Projet</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- L'OVERLAY  -->
+<div class="menu-overlay" id="menuOverlay"></div>
+     <!-- fin  -->
+
+    <!--  la Section  Hero -->
+    <section id="hero">
+        <div class="container hero-content">
+            <div class="hero-left">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/aim%C3%A9-tabriz-winner-diantalou-samba-8b098a353/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/WinterPR19" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <h1>Aimé<br>Diantalou-samba</h1>
+                <p class="subtitle">Étudiant en informatique</p>
+                <a href="#about" class="btn-welcome">Bienvenue</a>
+            </div>
+            <div class="hero-right">
+                <img src="device.png" alt="Developer illustration">
+            </div>
+        </div>
+    </section>
+     <!-- fin  -->
+
+    <!-- la  Section A propos  -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>A PROPOS</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>  Bonjour c'est Aimé Diantalou-samba,<br><br>
+                 Je suis actuellement étudiant au sein de <strong>Cours-Diderot</strong> 🗺️ en deuxième année de
+                        <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option
+                        <strong>SLAM (Solutions Logicielles et Applications Métiers)</strong>, une spécialisation orientée vers
+                         le développement 💻.
+                    </p>
+                    
+                    <p>
+  Actuellement toujours en cours d’études 🎓, je vous propose sur ce portfolio de découvrir les
+  différentes formations, études et projets professionnels que j’ai pu entreprendre au cours de mon parcours.
+                          Vous retrouverez également ci-dessous mon CV ainsi que mes différents projets 👩‍💻.</p>
+            <div class="about-btns">
+                       <a href="CV.pdf" target="_blank" class="btn-primary">CV</a>
+                       <a href="Lettre_Motivation.pdf" target="_blank" class="btn-primary">Lettre de Motivation</a>
+            </div>
+                    <div class="interests">
+                        <h3>Centres d'intérêt</h3>
+<div class="interests-list-modern">
+    <div class="interest-card">
+        <div class="interest-img-container">
+            <img src="https://static.vecteezy.com/system/resources/previews/011/385/241/non_2x/coding-flat-icon-free-vector.jpg" alt="Coder">
+        </div>
+        <span>Coder</span>
+    </div>
+    
+    <div class="interest-card">
+        <div class="interest-img-container">
+            <img src="https://img.freepik.com/free-vector/flat-design-man-playing-football_52683-126622.jpg" alt="Sport">
+        </div>
+        <span>Sport</span>
+    </div>
+    
+    <div class="interest-card">
+        <div class="interest-img-container">
+            <img src="https://img.freepik.com/premium-vector/books-flat-icon-reading-literature_444196-9628.jpg" alt="Lire">
+        </div>
+        <span>Lire</span>
+    </div>
+    
+    <div class="interest-card">
+        <div class="interest-img-container">
+            <img src="https://thumbs.dreamstime.com/b/vector-modern-flat-style-concept-tourism-industry-travelling-airplane-planning-summer-vacations-42913615.jpg" alt="Voyager">
+        </div>
+        <span>Voyager</span>
+    </div>
+</div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="about image.png" alt="Computer illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- fin  -->
+
+    <!--Section présentation du  BTS SIO   -->
+    <section id="bts-sio">
+        <div class="container">
+            <h2>Qu'est ce que le BTS SIO ?</h2>
+            <p class="bts-subtitle"><em>Je vous présente la formation que j'ai suivie et évolué durant deux ans.</em></p>
+            <p>Le Brevet de Technicien Supérieur aux Services Informatiques aux Organisations <strong>(BTS SIO)</strong>  est un programme de niveau Bac+2 qui s'adresse aux personnes qui souhaitent se former en deux ans aux métiers d'administrateur réseau ou de développeur.</p>
+            <p>Elle peut-être réalisable soit en alternance d'une durée de 12 ou de 24 mois ou alors en initial avec minimum 10 semaines de stages obligatoire en entreprise d'une durée de 2 à 3 mois, afin de s'initier aux réalités du domaine professionnel.</p>
+
+            <h3>Elle propose deux spécialités :</h3>
+ <div class="specialties-grid">
+
+    <!-- Carte SLAM -->
+    <div class="flip-card-container">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <div class="specialty-header">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Spécialité SLAM</h4>
+                </div>
+                <p class="flip-card-subtitle">Solutions Logicielles et Applications Métiers</p>
+                <div class="flip-indicator">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Cliquez pour plus de détails</span>
+                </div>
+            </div>
+
+            <div class="flip-card-back">
+                <h4>Spécialité SLAM</h4>
+                <p>Cette spécialité vous formera à développer des compétences en développement d'applications...</p>
+                <p><strong>Métiers accessibles :</strong></p>
+                <ul>
+                    <li>Analyste-programmeur</li>
+                    <li>Développeur d'applications mobile</li>
+                    <li>Technicien informatique</li>
+                    <li>Développeur web</li>
+                    <li>Intégrateur web</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carte SISR -->
+    <div class="flip-card-container">
+        <div class="flip-card">
+            <div class="flip-card-front">
+                <div class="specialty-header">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>Spécialité SISR</h4>
+                </div>
+                <p class="flip-card-subtitle">Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                <div class="flip-indicator">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Cliquez pour plus de détails</span>
+                </div>
+            </div>
+
+            <div class="flip-card-back">
+                <h4>Spécialité SISR</h4>
+                <p>Cette spécialité vous formera sur la gestion et la sécurisation des infrastructures réseau.</p>
+                <p><strong>Métiers accessibles :</strong></p>
+                <ul>
+                    <li>Administrateur systèmes et réseaux</li>
+                    <li>Technicien support</li>
+                    <li>Technicien réseau</li>
+                    <li>Gestionnaire d'infrastructures</li>
+                    <li>RSSI junior</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+    </section>
+     <!-- fin  -->
+
+    <!--  Section experience proffesionnelle -->
+    <section id="resume">
+        <div class="container">
+            <div class="section-header">
+                <h2>PARCOURS SCOLAIRE</h2>
+                <div class="underline"></div>
+            </div>
+            <p class="resume-subtitle"><em>Suiver mon cursus scolaire, mes différentes formations et mon parcours professionnel.</em></p>
+
+            <div class="timeline-category">EXPÉRIENCES PROFESSIONNELLES</div>
+
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Assistant informatique(A.Prépa Réseaux&Télécoms) - TechnoServ</h3>
+                         <stage>Stage de 2 mois</stage>
+                          <span class="location"> pointe-Noire </span>
+                        <span class="date">| Mai 2024 - Juin 2024</span>
+                        <p>Stage de découverte en Réseaux & Télécoms (TechnoServ, 2022) : cette première expérience professionnelle m'a permis 
+                            d'identifier ma préférence pour le développement logiciel, conduisant à ma réorientation en BTS SIO SLAM.</p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Agent polyvalent de restauration - Crous Toulouse occitanie</h3>
+                        <span class="date">| Depuis septembre 2025 </span>
+                        <span class="location"> Toulouse 31400 </span>
+                        <mois>6 mois à ce jour</mois>
+                        <p>Parallèlement à ma formation, j'exerce un emploi étudiant au CROUS Toulouse Occitanie en tant qu'agent polyvalent de restauration. Cette expérience, bien que non technique, me permet de développer des compétences transférables essentielles : 
+                            gestion du stress dans un environnement à rythme soutenu, organisation multitâche, 
+                            et surtout une grande capacité d'adaptation face à des situations imprévues.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Agent de régulation — Médiathèque Grand M</h3>
+                         <span class="date">| Depuis janvier 2026 </span>
+                        <span class="location">belfontaine , Toulouse </span>
+                        <p> Au sein de la bibliothèque municipale de Toulouse, 
+                            j'assure la régulation des espaces et l'accueil des usagers dans un environnement exigeant où concentration et calme sont essentiels ainsi que l'assistance aux ressources numériques. 
+                            Cette fonction me permet de développer une pédagogie adaptée pour guider des profils variés — étudiants, chercheurs,
+                            enseignants — dans l'utilisation des bases de données, des catalogues en ligne et des outils documentaires. 
+                            La gestion des flux en période d'affluence m'apprend à prioriser les demandes et à résoudre des situations techniques avec calme et efficacité. 
+                            Cette expérience renforce quotidiennement ma rigueur, ma patience et ma capacité à vulgariser des concepts techniques,
+                             des atouts essentiels dans le développement d'applications accessibles et user-friendly.</p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- fin  -->
+
+<!--  Section education -->
+            <div class="timeline-category">EDUCATION</div>
+
+            <div class="timeline education">
+                <div class="timeline-item  ">
+                        <i class="fas fa-graduation-cap"></i>
+                    <div class="timeline-content">
+                        <h3>BTS - Services Informatiques aux Organisations</h3>
+                        <span class="location">Cours Diderot (Actuel) Toulouse | 2024 - 2026</span>
+                        <p>Choix spécialités : Option SLAM (Solutions logicielles et Applications Métiers).</p>
+                    </div>
+                </div>
+
+               <div class="timeline-item ">
+                        <i class="fas fa-graduation-cap"></i>
+                    <div class="timeline-content">
+                        <h3>Licence Reseaux&Télécoms | Année préparatoire</h3>
+                        <span class="location">Pointe-Noire, congo-Brazzaville | 2023 - 2024</span>
+                        <p>J'ai débuté mon parcours dans l'informatique par une année préparatoire 
+                            en Réseaux et Télécoms, où j'ai acquis les fondamentaux des infrastructures
+                             réseau et des télécommunications. Cette formation m'a permis de découvrir l'architecture des systèmes informatiques, la configuration d'équipements 
+                            réseau (switches, routeurs) et les bases de la cybersécurité. </p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item">
+                        <i class="fas fa-graduation-cap"></i>
+                    <div class="timeline-content">
+                        <h3>BAC - Scientifiques</h3>
+                        <span class="location">Lycée 30 Mars 1970, Pointe-Noire | 2022 - 2023</span>
+                        <p>Choix des spécialités : Terminal D (Sciences de la vie et de la terre)</p>
+                        <p><strong>Obtention du baccalauréat scientifique avec mention assez bien.</strong></p>
+                    </div>
+                 
+                </div>
+                 
+                 <div class="timeline-item">
+                        <i class="fas fa-graduation-cap"></i>
+                    <div class="timeline-content">
+                        <h3>Brevet</h3>
+                        <span class="location">Collège Les Mérites, Pointe-Noire | 2019 - 2020</span>
+                        <p> <strong>Obtentiondu BEPC avec mention assez bien.</strong></p>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- fin  -->
+
+    <!--  Section compétences -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mes compétences en  développement 👨‍💻</h2>
+                <div class="underline"></div>
+            </div>
+            <p class="skills-subtitle"><em>Voici les différents outils et logiciels que j'ai utilisés lors de ma formation.</em></p>
+             <p>Toutes ces connaissances ont été acquises de différentes façons. 
+                Elles ont été acquises durant mes études en <strong>BTS SIO Option SLAM</strong> et d'autres par ma propre initiative en essayant de mettre en place des solutions. J’ai également relevé des petits défis organisés,
+                 ce qui permet d’effectuer des recherches et aller encore plus loin.</p>
+
+
+                         <div class="section-header languages-header">
+                <h2>Langages pratiqués</h2>
+                <div class="underline"></div>
+            </div>
+            <p class="skills-subtitle"><em>Durant ma formation j'ai pu pratiquer et acquérir des connaissances sur différents langages.</em></p>
+            <p>Voici les langages que j'ai pu pratiquer et acquérir des connaissances durant ma formation en <strong>BTS SIO Option SLAM</strong> :</p>
+
+           <!-- Grilles des compétences -->
+<div class="skills-grid">
+    <!-- HTML -->
+    <div class="skill-card">
+        <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+        </div>
+        <h4>HTML</h4>
+    </div>
+
+    <!-- CSS -->
+    <div class="skill-card">
+        <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+        </div>
+        <h4>CSS</h4>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="skill-card">
+        <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+        </div>
+        <h4>JAVASCRIPT</h4>
+    </div>
+
+    <!-- ✅ MYSQL (remplace React) -->
+    <div class="skill-card">
+        <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+        </div>
+        <h4>MYSQL</h4>
+    </div>
+
+    <!-- PHP -->
+    <div class="skill-card">
+        <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+        </div>
+        <h4>PHP</h4>
+    </div>
+
+    <!-- Java -->
+    <div class="skill-card">
+        <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+        </div>
+        <h4>JAVA</h4>
+    </div>
+
+    <!-- Python -->
+    <div class="skill-card">
+        <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+        </div>
+        <h4>PYTHON</h4>
+    </div>
+</div>
+<!-- fin  -->
+
+
+    
+           <!-- Section Outils & Logiciels -->
+<section id="tools">
+    <div class="container">
+        <div class="section-header">
+            <h2>Outils & Logiciels 🛠️</h2>
+            <div class="underline"></div>
+        </div>
+        
+        <p class="tools-intro">
+            Voici les différents outils et logiciels que j'utilise régulièrement dans mes projets de développement et de création.
+        </p>
+
+        <div class="tools-grid-modern">
+            <!-- Ligne 1 -->
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Photoshop">
+                </div>
+                <h4>PHOTOSHOP</h4>
+            </div>
+
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                   <img src="https://www.vectorlogo.zone/logos/virtualbox/virtualbox-icon.svg" alt="VirtualBox">
+                </div>
+                <h4>VIRTUALBOX</h4>
+            </div>
+
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva">
+                </div>
+                <h4>CANVA</h4>
+            </div>
+
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg" alt="Blender">
+                </div>
+                <h4>BLENDER</h4>
+            </div>
+
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-plain.svg" alt="Première Pro">
+                </div>
+                <h4>PREMIÈRE PRO</h4>
+            </div>
+
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Visual Studio">
+                </div>
+                <h4>VISUAL STUDIO</h4>
+            </div>
+
+            <!-- Ligne 2 -->
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                </div>
+                <h4>GITHUB</h4>
+            </div>
+
+           <div class="tool-card-modern">
+    <div class="tool-icon-modern office-icon">
+        <i class="fas fa-file-word" style="color: #2B579A;"></i>
+        <i class="fas fa-file-excel" style="color: #217346;"></i>
+        <i class="fas fa-file-powerpoint" style="color: #D24726;"></i>
+    </div>
+                <h4>PACK OFFICE</h4>
+            </div>
+
+            <div class="tool-card-modern">
+    <div class="tool-icon-modern">
+        <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt="IA" style="width: 60px; height: 60px;">
+    </div>
+    <h4>INTELLIGENCE ARTIFICIELLE</h4>
+</div>
+
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                </div>
+                <h4>FIGMA</h4>
+            </div>
+
+            <div class="tool-card-modern">
+                <div class="tool-icon-modern">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress">
+                </div>
+                <h4>WORDPRESS</h4>
+            </div>
+        </div>
+    </div>
+</section>
+    </section>
+<!-- fin  -->
+    
+
+          <!-- SECTION CONTACT RGPD -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info-side">
+                <h2>Travaillons ensemble</h2>
+                <p>Un projet ? Une question ? Discutons-en.</p>
+                
+                <div class="contact-quick-links">
+                    <a href="mailto:diantalouaime242@gmail.com" class="contact-chip">
+                        <i class="fas fa-envelope"></i>
+                        <span>diantalouaime242@gmail.com</span>
+                    </a>
+                    
+                    <a href="tel:+33775863565" class="contact-chip">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 7 75 86 35 65</span>
+                    </a>
+                    
+                    <div class="contact-chip location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Toulouse, France</span>
+                    </div>
+                </div>
+
+                <div class="contact-social-mini">
+                    <a href="https://www.linkedin.com/in/aim%C3%A9-tabriz-winner-diantalou-samba-8b098a353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/WinterPR19" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-side">
+                <form id="contactForm" class="form-compact" action="https://formspree.io/f/mnjbnenk" method="POST">
+                    <!-- Protection anti-spam cachée -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <div class="form-row-compact">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="text" name="sujet" placeholder="Sujet" required>
+                    <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
+                    
+                    <!-- Case à cocher RGPD -->
+                    <!-- Case à cocher RGPD -->
+<div class="rgpd-consent">
+    <label class="rgpd-label">
+        <input type="checkbox" name="rgpd" id="rgpdCheck" required>
+        <span class="checkmark"></span>
+        <span class="rgpd-text">
+            J'accepte que mes données personnelles soient traitées conformément à la 
+            <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> 
+            et au RGPD. Ces données ne seront utilisées que pour répondre à ma demande.
+        </span>
+    </label>
+    <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité pour envoyer le message.</div>
+</div>
+                    
+                    <button type="submit" class="btn-send" id="submitBtn">
+                        <span>Envoyer</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <!-- Message de confirmation -->
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- fin  -->
+
+    <!-- le Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="footer-simple">
+            <!-- Logo + tagline -->
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+                <p class="footer-tagline">Développeur en formation</p>
+            </div>
+            
+            <!-- Navigation rapide -->
+            <nav class="footer-nav">
+                <a href="#hero">Accueil</a>
+                <a href="#about">À propos</a>
+                <a href="#resume">Parcours</a>
+                <a href="#skills">Compétences</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            
+            <!-- Copyright -->
+            <div class="footer-copy">
+                <p>&copy; 2026 Aimé Diantalou-samba</p>
+                <span class="footer-heart">Fait avec <i class="fas fa-heart"></i> à Toulouse</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!--Retour au haut de la page -->
+    <a href="#" class="back-to-top" title="Retour au haut de la page" aria-label="Retour au haut de la page"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="/src/main.ts" type="module"></script>
+    <script src="main.js"></script>
+    <script>
+// Intersection Observer for About Section Image Animation
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+});
+document.querySelectorAll('.about-image').forEach((el) => observer.observe(el));
+    </script>
+    
+
+
+</body>
+</html>

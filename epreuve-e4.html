@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Épreuve E4 ⎟ Aimé Diantalou-samba</title>
+    <meta name="description" content="Épreuve E4 - Conception et maintenance de solutions informatiques - Portfolio BTS SIO SLAM">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #epreuve-page {
+            padding: 120px 0 80px;
+            background: var(--bg-light);
+            min-height: 60vh;
+        }
+        
+        #epreuve-page .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .epreuve-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .epreuve-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .epreuve-card h3 i {
+            font-size: 1.8rem;
+        }
+        
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .competence-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .competence-item h4 {
+            color: var(--primary-dark);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .competence-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .documents-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .document-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        .document-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .document-item i {
+            font-size: 1.5rem;
+            color: #e74c3c;
+        }
+        
+        .document-info {
+            flex: 1;
+        }
+        
+        .document-info h5 {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        
+        .document-info span {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        
+        .btn-download {
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-download:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+   <header id="header">
+    <div class="container">
+      <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+        
+        <!-- BOUTON BURGER -->
+        <button type="button" class="burger-toggle" id="burgerToggle" title="Menu" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- NAVIGATION -->
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html#hero" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#about" class="nav-link">A propos</a></li>
+                <li><a href="index.html#resume" class="nav-link">Parcours</a></li>
+                <li><a href="index.html#skills" class="nav-link">Compétences</a></li>
+                <li><a href="veille.html" class="nav-link active">Veille Technologique</a></li>
+                <li class="dropdown">
+                    <a href="#">Épreuves <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                          <li><a href="epreuve-e4.html" class="active">Épreuve E4</a></li>
+                        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+                        <li><a href="certifications.html">Certifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="loading-game.html?to=projets.html" class="nav-btn">Projet</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- OVERLAY (ajoutez ça juste après le header) -->
+<div class="menu-overlay" id="menuOverlay"></div>
+     <!-- fin  -->
+
+    <!-- SECTION ÉPREUVE E4 -->
+    <section id="epreuve-page">
+        <div class="container">
+            <div class="section-header">
+                <h2>ÉPREUVE E4</h2>
+                <div class="underline"></div>
+                <p style="margin-top: 15px; color: #64748b; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Conception et maintenance de solutions informatiques - Coefficient 4
+                </p>
+            </div>
+
+            <!-- Présentation -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-clipboard-list"></i> Présentation de l'épreuve</h3>
+                <p style="margin-bottom: 20px; line-height: 1.8;">
+                    L'épreuve E4 du BTS SIO vise à évaluer les compétences des candidats dans la conception, 
+                    la réalisation et la maintenance de solutions informatiques. Cette épreuve orale dure 
+                    <strong>40 minutes</strong> (30 minutes de présentation + 10 minutes d'entretien) et porte sur 
+                    les activités réalisées en entreprise durant les stages ou l'alternance.
+                </p>
+                
+                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; border-radius: 8px;">
+                    <strong><i class="fas fa-info-circle"></i> Important :</strong> 
+                    Cette épreuve est ponctuée et se déroule devant un jury composé d'un enseignant et d'un professionnel.
+                </div>
+            </div>
+
+            <!-- Compétences évaluées -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-tasks"></i> Compétences évaluées</h3>
+                <div class="competences-grid">
+                    <div class="competence-item">
+                        <h4><i class="fas fa-search"></i> A1.1.1</h4>
+                        <p>Analyse du cahier des charges d'un service à produire</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-pencil-ruler"></i> A1.2.1</h4>
+                        <p>Élaboration et présentation d'un dossier de conception</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-code"></i> A1.2.2</h4>
+                        <p>Développement de la solution informatique</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-vial"></i> A1.2.3</h4>
+                        <p>Tests d'intégration et d'acceptation d'un service</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-tools"></i> A1.2.4</h4>
+                        <p>Rédaction d'une documentation technique</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-users"></i> A1.3.1</h4>
+                        <p>Mise en place d'une solution informatique</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mes réalisations -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-folder-open"></i> Mes réalisations professionnelles</h3>
+                <p style="margin-bottom: 20px;">Voici les situations professionnelles que je présenterai à l'épreuve :</p>
+                
+                <div style="display: grid; gap: 20px;">
+                    <div style="background: #f0f9ff; padding: 25px; border-radius: 12px; border-left: 4px solid #0ea5e9;">
+                        <h4 style="color: #0369a1; margin-bottom: 10px;">Situation 1 : [Nom de ton projet]</h4>
+                        <p style="color: #64748b; margin-bottom: 15px;">
+                            Description rapide du contexte, des objectifs et des technologies utilisées.
+                            Exemple : Développement d'une application web de gestion de stock en PHP/MySQL.
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #0ea5e9;">PHP</span>
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #0ea5e9;">MySQL</span>
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #0ea5e9;">HTML/CSS</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f0fdf4; padding: 25px; border-radius: 12px; border-left: 4px solid #22c55e;">
+                        <h4 style="color: #15803d; margin-bottom: 10px;">Situation 2 : [Nom de ton projet]</h4>
+                        <p style="color: #64748b; margin-bottom: 15px;">
+                            Deuxième situation professionnelle à présenter.
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #22c55e;">Java</span>
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #22c55e;">JavaFX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-file-alt"></i> Documents téléchargeables</h3>
+                <div class="documents-list">
+                    <div class="document-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="document-info">
+                            <h5>Tableau de synthèse des compétences</h5>
+                            <span>PDF • 2 pages • Dernière mise à jour : Janvier 2025</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                    
+                    <div class="document-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="document-info">
+                            <h5>Fiche descriptive Situation 1</h5>
+                            <span>PDF • 5 pages</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                    
+                    <div class="document-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="document-info">
+                            <h5>Fiche descriptive Situation 2</h5>
+                            <span>PDF • 5 pages</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                    
+                    <div class="document-item">
+                        <i class="fas fa-file-archive"></i>
+                        <div class="document-info">
+                            <h5>Code source complet</h5>
+                            <span>ZIP • Sources des deux situations</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- fin  -->
+ 
+ <!-- SECTION CONTACT RGPD -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info-side">
+                <h2>Travaillons ensemble</h2>
+                <p>Un projet ? Une question ? Discutons-en.</p>
+                
+                <div class="contact-quick-links">
+                    <a href="mailto:diantalouaime242@gmail.com" class="contact-chip">
+                        <i class="fas fa-envelope"></i>
+                        <span>diantalouaime242@gmail.com</span>
+                    </a>
+                    
+                    <a href="tel:+33775863565" class="contact-chip">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 7 75 86 35 65</span>
+                    </a>
+                    
+                    <div class="contact-chip location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Toulouse, France</span>
+                    </div>
+                </div>
+
+                <div class="contact-social-mini">
+                    <a href="https://www.linkedin.com/in/aim%C3%A9-tabriz-winner-diantalou-samba-8b098a353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/WinterPR19" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-side">
+                <form id="contactForm" class="form-compact" action="https://formspree.io/f/mnjbnenk" method="POST">
+                    <!-- Protection anti-spam cachée -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <div class="form-row-compact">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="text" name="sujet" placeholder="Sujet" required>
+                    <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
+                    
+                    <!-- Case à cocher RGPD -->
+                    <!-- Case à cocher RGPD -->
+<div class="rgpd-consent">
+    <label class="rgpd-label">
+        <input type="checkbox" name="rgpd" id="rgpdCheck" required>
+        <span class="checkmark"></span>
+        <span class="rgpd-text">
+            J'accepte que mes données personnelles soient traitées conformément à la 
+            <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> 
+            et au RGPD. Ces données ne seront utilisées que pour répondre à ma demande.
+        </span>
+    </label>
+    <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité pour envoyer le message.</div>
+</div>
+                    
+                    <button type="submit" class="btn-send" id="submitBtn">
+                        <span>Envoyer</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <!-- Message de confirmation -->
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- fin  -->
+
+    <!-- le FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="footer-brand">
+                   <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+                    <p class="footer-tagline">Développeur en formation</p>
+                </div>
+                
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#resume">Parcours</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="veille.html">Veille</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                
+                <div class="footer-copy">
+                    <p>&copy; 2026 Aimé Diantalou-samba</p>
+                    <span class="footer-heart">Fait avec <i class="fas fa-heart"></i> à Toulouse</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="main.js"></script>
+</body>
+</html>

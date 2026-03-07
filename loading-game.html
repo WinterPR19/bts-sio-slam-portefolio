@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chargement...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Titre du jeu */
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .game-title span {
+            color: #e94560;
+        }
+
+        /* Score */
+        .score-board {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+        }
+
+        .score-board span {
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        /* Zone de jeu */
+        #game-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+
+        /* Cible à cliquer */
+        .target {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: transform 0.1s;
+            animation: pulse 1s infinite;
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+        }
+
+        .target:hover {
+            transform: scale(1.2);
+        }
+
+        .target:active {
+            transform: scale(0.9);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(233, 69, 96, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(233, 69, 96, 0.8); }
+        }
+
+        /* Particules d'explosion */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #e94560;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: explode 0.6s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Barre de progression */
+        .progress-container {
+            margin-top: 30px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .progress-text {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e94560, #ffd93d);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 5px;
+        }
+
+        /* Message de chargement */
+        .loading-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Instructions */
+        .instructions {
+            position: absolute;
+            bottom: 30px;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+
+        .instructions i {
+            margin-right: 8px;
+            color: #e94560;
+        }
+
+        /* Animation de transition vers le site */
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Récompense de chargement terminé */
+        .complete-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .complete-message.show {
+            animation: popIn 0.5s forwards;
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .complete-message i {
+            font-size: 5rem;
+            color: #4ade80;
+            margin-bottom: 20px;
+        }
+
+        .complete-message h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Mode mobile */
+        @media (max-width: 500px) {
+            #game-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .progress-container {
+                width: 300px;
+            }
+            
+            .score-board {
+                top: 10px;
+                right: 10px;
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Score -->
+    <div class="score-board">
+        Score: <span id="score">0</span>
+    </div>
+
+    <!-- Titre -->
+    <div class="game-title">
+        Clique sur les <span>bugs</span> pendant le chargement !
+    </div>
+
+    <!-- Zone de jeu -->
+    <div id="game-container">
+        <div class="target" id="target">🐛</div>
+    </div>
+
+    <!-- Progression -->
+    <div class="progress-container">
+        <div class="progress-text">Chargement du portfolio... <span id="percent">0%</span></div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="loading-text" id="loading-msg">Initialisation des pixels...</div>
+
+    <!-- Instructions -->
+    <div class="instructions">
+        <i class="fas fa-mouse-pointer"></i> Clique vite sur les bugs pour gagner des points !
+    </div>
+
+    <!-- Message de fin -->
+    <div class="complete-message" id="complete-msg">
+        <i class="fas fa-check-circle"></i>
+        <h2>Portfolio chargé !</h2>
+        <p>Redirection en cours...</p>
+    </div>
+
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // Variables du jeu
+        let score = 0;
+        let progress = 0;
+        let gameActive = true;
+        const target = document.getElementById('target');
+        const gameContainer = document.getElementById('game-container');
+        const scoreDisplay = document.getElementById('score');
+        const progressFill = document.getElementById('progress-fill');
+        const percentDisplay = document.getElementById('percent');
+        const loadingMsg = document.getElementById('loading-msg');
+        const completeMsg = document.getElementById('complete-msg');
+
+        // Messages de chargement humoristiques
+        const loadingMessages = [
+            "Initialisation des pixels...",
+            "Chargement des compétences...",
+            "Compilation des projets...",
+            "Optimisation des GIFs...",
+            "Connexion à la matrice...",
+            "Débogage de l'univers...",
+            "Téléchargement des idées...",
+            "Compression de la créativité...",
+            "Mise à jour des rêves...",
+            "Préparation du café du développeur..."
+        ];
+
+        // Position aléatoire de la cible
+        function moveTarget() {
+            if (!gameActive) return;
+            
+            const containerRect = gameContainer.getBoundingClientRect();
+            const targetSize = 50;
+            
+            const maxX = containerRect.width - targetSize - 20;
+            const maxY = containerRect.height - targetSize - 20;
+            
+            const x = Math.random() * maxX + 10;
+            const y = Math.random() * maxY + 10;
+            
+            target.style.left = x + 'px';
+            target.style.top = y + 'px';
+            
+            // Changer l'emoji parfois
+            const emojis = ['🐛', '🐞', '🦟', '🪲', '🕷️', '🐜'];
+            target.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        }
+
+        // Créer des particules d'explosion
+        function createParticles(x, y) {
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const angle = (i / 8) * Math.PI * 2;
+                const velocity = 50 + Math.random() * 50;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+                
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                
+                gameContainer.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 600);
+            }
+        }
+
+        // Clic sur la cible
+        target.addEventListener('click', (e) => {
+            if (!gameActive) return;
+            
+            // Augmenter le score
+            score += 10;
+            scoreDisplay.textContent = score;
+            
+            // Effet visuel
+            const rect = target.getBoundingClientRect();
+            const containerRect = gameContainer.getBoundingClientRect();
+            createParticles(
+                rect.left - containerRect.left + 25,
+                rect.top - containerRect.top + 25
+            );
+            
+            // Accélérer le chargement légèrement
+            progress += 2;
+            
+            // Déplacer la cible
+            moveTarget();
+        });
+
+        // Démarrer le jeu
+        moveTarget();
+        
+        // Déplacer la cible automatiquement si non cliquée
+        setInterval(() => {
+            if (gameActive && Math.random() > 0.3) {
+                moveTarget();
+            }
+        }, 1500);
+
+        // Simulation de chargement
+        let messageIndex = 0;
+        
+        const loadingInterval = setInterval(() => {
+            progress += Math.random() * 3 + 1;
+            
+            if (progress > 100) progress = 100;
+            
+            progressFill.style.width = progress + '%';
+            percentDisplay.textContent = Math.floor(progress) + '%';
+            
+            // Changer le message de temps en temps
+            if (Math.random() > 0.7) {
+                loadingMsg.textContent = loadingMessages[messageIndex];
+                messageIndex = (messageIndex + 1) % loadingMessages.length;
+            }
+            
+            // Cible se déplace plus vite vers la fin
+            if (progress > 70) {
+                target.style.animationDuration = '0.5s';
+            }
+            
+            if (progress >= 100) {
+                clearInterval(loadingInterval);
+                endGame();
+            }
+        }, 200);
+
+       // Fin du jeu
+function endGame() {
+    gameActive = false;
+    target.style.display = 'none';
+    
+    // Afficher le message de fin
+    completeMsg.classList.add('show');
+    
+    // Sauvegarder le score
+    localStorage.setItem('loadingGameScore', score);
+    
+    // Récupérer la destination depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const destination = urlParams.get('to') || 'index.html';
+    
+    // Rediriger après 2 secondes
+    setTimeout(() => {
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = destination;
+        }, 500);
+    }, 2000);
+}
+    </script>
+</body>
+</html>

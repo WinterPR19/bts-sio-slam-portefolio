@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Épreuve E5 ⎟ Aimé Diantalou-samba</title>
+    <meta name="description" content="Épreuve E5 - Production et fourniture de services informatiques - Portfolio BTS SIO SLAM">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #epreuve-page {
+            padding: 120px 0 80px;
+            background: var(--bg-light);
+            min-height: 60vh;
+        }
+        
+        #epreuve-page .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .epreuve-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #E07B39;
+        }
+        
+        .epreuve-card h3 {
+            color: #E07B39;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .epreuve-card h3 i {
+            font-size: 1.8rem;
+        }
+        
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .competence-item {
+            background: #fff7ed;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #fed7aa;
+        }
+        
+        .competence-item h4 {
+            color: #c2410c;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .competence-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .documents-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .document-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        .document-item:hover {
+            border-color: #E07B39;
+            transform: translateX(5px);
+        }
+        
+        .document-item i {
+            font-size: 1.5rem;
+            color: #e74c3c;
+        }
+        
+        .document-info {
+            flex: 1;
+        }
+        
+        .document-info h5 {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        
+        .document-info span {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        
+        .btn-download {
+            padding: 8px 20px;
+            background: #E07B39;
+            color: white;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-download:hover {
+            background: #c75B3A;
+        }
+    </style>
+</head>
+<body>
+ <header id="header">
+    <div class="container">
+      <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+        
+        <!-- BOUTON BURGER -->
+        <button type="button" class="burger-toggle" id="burgerToggle" title="Menu" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- NAVIGATION -->
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html#hero" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#about" class="nav-link">A propos</a></li>
+                <li><a href="index.html#resume" class="nav-link">Parcours</a></li>
+                <li><a href="index.html#skills" class="nav-link">Compétences</a></li>
+                <li><a href="veille.html" class="nav-link active">Veille Technologique</a></li>
+                <li class="dropdown">
+                    <a href="#">Épreuves <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="epreuve-e4.html">Épreuve E4</a></li>
+                        <li><a href="epreuve-e5.html" class="active">Épreuve E5</a></li>
+                        <li><a href="certifications.html">Certifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="loading-game.html?to=projets.html" class="nav-btn">Projet</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- OVERLAY (ajoutez ça juste après le header) -->
+<div class="menu-overlay" id="menuOverlay"></div>
+     <!-- fin  -->
+
+    <!-- SECTION ÉPREUVE E5 -->
+    <section id="epreuve-page">
+        <div class="container">
+            <div class="section-header">
+                <h2>ÉPREUVE E5</h2>
+                <div class="underline"></div>
+                <p style="margin-top: 15px; color: #64748b; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Production et fourniture de services informatiques - Coefficient 4
+                </p>
+            </div>
+
+            <!-- Présentation -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-server"></i> Présentation de l'épreuve</h3>
+                <p style="margin-bottom: 20px; line-height: 1.8;">
+                    L'épreuve E5 du BTS SIO évalue les compétences liées à la <strong>production et à la fourniture 
+                    de services informatiques</strong>. Contrairement à l'E4 qui se concentre sur la conception, 
+                    l'E5 porte sur l'exploitation, le déploiement et la maintenance des solutions en environnement 
+                    de production.
+                </p>
+                
+                <div style="background: #fff7ed; border-left: 4px solid #E07B39; padding: 15px 20px; border-radius: 8px;">
+                    <strong><i class="fas fa-clock"></i> Durée :</strong> 
+                    40 minutes (préparation 20 min + présentation 15 min + entretien 5 min) en contrôle en cours de formation.
+                </div>
+            </div>
+
+            <!-- Compétences évaluées -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-tasks"></i> Compétences évaluées</h3>
+                <div class="competences-grid">
+                    <div class="competence-item">
+                        <h4><i class="fas fa-rocket"></i> A2.1.1</h4>
+                        <p>Accompagnement des utilisateurs dans la prise en main d'un service</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-box-open"></i> A2.2.1</h4>
+                        <p>Déploiement d'un service</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-shield-alt"></i> A2.2.2</h4>
+                        <p>Mise à jour d'un service</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-bug"></i> A2.3.1</h4>
+                        <p>Exploitation des éléments d'un service</p>
+                    </div>
+                    <div class="competence-item">
+                        <h4><i class="fas fa-life-ring"></i> A2.3.2</h4>
+                        <p>Assistance aux utilisateurs</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contextes professionnels -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-briefcase"></i> Contextes professionnels présentés</h3>
+                
+                <div style="display: grid; gap: 20px; margin-top: 20px;">
+                    <div style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); padding: 25px; border-radius: 12px; border: 1px solid #fed7aa;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <h4 style="color: #c2410c; font-size: 1.2rem;">Contexte 1 : Mise en production d'une application</h4>
+                            <span style="background: #E07B39; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">SLAM</span>
+                        </div>
+                        <p style="color: #64748b; margin-bottom: 15px;">
+                            Déploiement d'une application web sur un serveur de production, 
+                            configuration de l'environnement, gestion des bases de données.
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #c2410c;">Déploiement</span>
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #c2410c;">Docker</span>
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #c2410c;">CI/CD</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 25px; border-radius: 12px; border: 1px solid #bae6fd;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <h4 style="color: #0369a1; font-size: 1.2rem;">Contexte 2 : Support et maintenance</h4>
+                            <span style="background: #0284c7; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Support</span>
+                        </div>
+                        <p style="color: #64748b; margin-bottom: 15px;">
+                            Gestion des tickets, résolution d'incidents, mise à jour corrective et évolutive 
+                            d'une application métier.
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #0369a1;">Ticketing</span>
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #0369a1;">Debugging</span>
+                            <span style="background: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #0369a1;">Tests</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents -->
+            <div class="epreuve-card">
+                <h3><i class="fas fa-file-alt"></i> Documents et supports</h3>
+                <div class="documents-list">
+                    <div class="document-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="document-info">
+                            <h5>Tableau de synthèse E5</h5>
+                            <span>PDF • Liste des compétences et contextes</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                    
+                    <div class="document-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="document-info">
+                            <h5>Fiche Contexte 1 - Déploiement</h5>
+                            <span>PDF • Description détaillée</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                    
+                    <div class="document-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="document-info">
+                            <h5>Fiche Contexte 2 - Support</h5>
+                            <span>PDF • Description détaillée</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                    
+                    <div class="document-item">
+                        <i class="fas fa-image"></i>
+                        <div class="document-info">
+                            <h5>Captures d'écran et schémas</h5>
+                            <span>Archives visuelles des réalisations</span>
+                        </div>
+                        <a href="#" class="btn-download"><i class="fas fa-download"></i> Voir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- fin  -->
+
+ <!-- SECTION CONTACT RGPD -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info-side">
+                <h2>Travaillons ensemble</h2>
+                <p>Un projet ? Une question ? Discutons-en.</p>
+                
+                <div class="contact-quick-links">
+                    <a href="mailto:diantalouaime242@gmail.com" class="contact-chip">
+                        <i class="fas fa-envelope"></i>
+                        <span>diantalouaime242@gmail.com</span>
+                    </a>
+                    
+                    <a href="tel:+33775863565" class="contact-chip">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 7 75 86 35 65</span>
+                    </a>
+                    
+                    <div class="contact-chip location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Toulouse, France</span>
+                    </div>
+                </div>
+
+                <div class="contact-social-mini">
+                    <a href="https://www.linkedin.com/in/aim%C3%A9-tabriz-winner-diantalou-samba-8b098a353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/WinterPR19" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-side">
+                <form id="contactForm" class="form-compact" action="https://formspree.io/f/mnjbnenk" method="POST">
+                    <!-- Protection anti-spam cachée -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <div class="form-row-compact">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="text" name="sujet" placeholder="Sujet" required>
+                    <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
+                    
+                    <!-- Case à cocher RGPD -->
+                    <!-- Case à cocher RGPD -->
+<div class="rgpd-consent">
+    <label class="rgpd-label">
+        <input type="checkbox" name="rgpd" id="rgpdCheck" required>
+        <span class="checkmark"></span>
+        <span class="rgpd-text">
+            J'accepte que mes données personnelles soient traitées conformément à la 
+            <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> 
+            et au RGPD. Ces données ne seront utilisées que pour répondre à ma demande.
+        </span>
+    </label>
+    <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité pour envoyer le message.</div>
+</div>
+                    
+                    <button type="submit" class="btn-send" id="submitBtn">
+                        <span>Envoyer</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <!-- Message de confirmation -->
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- fin  -->
+
+    <!--le FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+                    <p class="footer-tagline">Développeur en formation</p>
+                </div>
+                
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#resume">Parcours</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="veille.html">Veille</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                
+                <div class="footer-copy">
+                    <p>&copy; 2026 Aimé Diantalou-samba</p>
+                    <span class="footer-heart">Fait avec <i class="fas fa-heart"></i> à Toulouse</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="main.js"></script>
+</body>
+</html>

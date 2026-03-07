@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets ⎟ Aimé Diantalou-samba</title>
+    <meta name="description" content="Découvrez mes projets de développement - Portfolio BTS SIO SLAM">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+    /* ============================================
+       1. CONTENEUR PRINCIPAL DE LA PAGE
+       ============================================ */
+    
+    /* Section principale des projets - positionnement et fond */
+    #projets-page {
+        position: relative;
+        padding: 120px 0 80px;
+        min-height: 60vh;
+        overflow: hidden;
+        background: none;
+    }
+    
+    /* FIN - Conteneur principal */
+
+
+    /* ============================================
+       2. IMAGE DE FOND ET OVERLAY
+       ============================================ */
+    
+    /* Image de fond avec effet parallax */
+    #projets-page::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('images projets jeux.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        transform: none;
+        z-index: -2; /* Derrière l'overlay */
+    }
+
+    /* Overlay dégradé pour assombrir l'image et améliorer la lisibilité */
+    #projets-page::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg, 
+            rgba(59, 95, 138, 0.8) 0%, 
+            rgba(15, 23, 42, 0.85) 100%
+        );
+        z-index: -1; /* Au-dessus de l'image mais sous le contenu */
+    }
+    
+    /* FIN - Image de fond et overlay */
+
+
+    /* ============================================
+       3. CONTENU ET EN-TÊTE DE SECTION
+       ============================================ */
+    
+    /* Conteneur de contenu - positionné au-dessus du fond */
+    #projets-page .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* En-tête de section centré */
+    #projets-page .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    
+    /* Titre de la section en blanc */
+    #projets-page .section-header h2 {
+        color: #ffffff;
+    }
+    
+    /* Texte d'introduction centré */
+    .projets-intro {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    /* FIN - Contenu et en-tête */
+
+
+    /* ============================================
+       4. FILTRES DE CATÉGORIES
+       ============================================ */
+    
+    /* Conteneur des boutons de filtrage */
+    .projets-filtres {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+    
+    /* Bouton de filtre individuel */
+    .filtre-btn {
+        padding: 10px 25px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background: transparent;
+        color: #ffffff;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    /* État hover et actif du bouton de filtre */
+    .filtre-btn:hover,
+    .filtre-btn.active {
+        background: var(--secondary-color);
+        border-color: var(--secondary-color);
+        color: rgb(255, 254, 254);
+    }
+    
+    /* FIN - Filtres */
+
+
+    /* ============================================
+       5. GRILLE DES PROJETS
+       ============================================ */
+    
+    /* Grille responsive des cartes projet */
+    .projets-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+    
+    /* FIN - Grille des projets */
+
+
+    /* ============================================
+       6. CARTE PROJET STANDARD
+       ============================================ */
+    
+    /* Carte individuelle de projet */
+    .projet-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    /* Effet de levitation au survol de la carte */
+    .projet-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+    
+    /* FIN - Carte projet standard */
+
+
+    /* ============================================
+       7. IMAGE ET OVERLAY DE LA CARTE
+       ============================================ */
+    
+    /* Conteneur de l'image du projet */
+    .projet-image {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    }
+    
+    /* Image du projet - remplit le conteneur */
+    .projet-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+    
+    /* Zoom de l'image au survol de la carte */
+    .projet-card:hover .projet-image img {
+        transform: scale(1.1);
+    }
+    
+    /* Overlay sombre avec les liens - apparait au survol */
+    .projet-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    /* Affichage de l'overlay au survol */
+    .projet-card:hover .projet-overlay {
+        opacity: 1;
+    }
+    
+    /* FIN - Image et overlay */
+
+
+    /* ============================================
+       8. LIENS ET BADGE TYPE DANS L'OVERLAY
+       ============================================ */
+    
+    /* Bouton lien circulaire dans l'overlay */
+    .projet-link {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        transform: translateY(20px);
+        transition: all 0.3s;
+    }
+    
+    /* Animation d'entrée des liens au survol */
+    .projet-card:hover .projet-link {
+        transform: translateY(0);
+    }
+    
+    /* Effet hover sur le bouton lien */
+    .projet-link:hover {
+        background: var(--secondary-color);
+        color: white;
+    }
+    
+    /* Badge indiquant le type de projet */
+    .projet-type {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(255,255,255,0.95);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+    
+    /* FIN - Liens et badge type */
+
+
+    /* ============================================
+       9. CONTENU TEXTUEL DE LA CARTE
+       ============================================ */
+    
+    /* Zone de contenu sous l'image */
+    .projet-content {
+        padding: 30px;
+    }
+    
+    /* Titre du projet */
+    .projet-content h3 {
+        font-size: 1.3rem;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+    
+    /* Description du projet */
+    .projet-content p {
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    
+    /* FIN - Contenu textuel */
+
+
+    /* ============================================
+       10. TECHNOLOGIES ET FOOTER DE LA CARTE
+       ============================================ */
+    
+    /* Liste des tags de technologies */
+    .projet-techs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+    
+    /* Tag de technologie individuel */
+    .tech-tag {
+        background: #f1f5f9;
+        color: var(--primary-color);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    /* Footer de la carte avec date et statut */
+    .projet-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid #e2e8f0;
+    }
+    
+    /* Date du projet */
+    .projet-date {
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+    
+    /* Statut du projet (terminé ou en cours) */
+    .projet-statut {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    
+    /* Couleur verte pour projet terminé */
+    .projet-statut.termine {
+        color: #10b981;
+    }
+    
+    /* Couleur orange pour projet en cours */
+    .projet-statut.en-cours {
+        color: #f59e0b;
+    }
+    
+    /* FIN - Technologies et footer */
+
+
+    /* ============================================
+       11. PROJET EN VEDETTE (MIS EN AVANT)
+       ============================================ */
+    
+    /* Section spéciale pour le projet mis en avant */
+    .projet-vedette {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+        color: white;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+    }
+    
+    /* Titre du projet en vedette */
+    .projet-vedette-content h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Description du projet en vedette */
+    .projet-vedette-content p {
+        opacity: 0.9;
+        line-height: 1.8;
+        margin-bottom: 25px;
+    }
+    
+    /* Conteneur de l'image du projet vedette */
+    .projet-vedette-image {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    
+    /* Image du projet vedette */
+    .projet-vedette-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* Bouton d'action du projet vedette */
+    .btn-vedette {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--secondary-color);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    /* Effet hover sur le bouton vedette */
+    .btn-vedette:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    /* FIN - Projet en vedette */
+
+
+    /* ============================================
+    
+    /* Adaptation mobile pour le projet vedette */
+    @media (max-width: 768px) {
+        .projet-vedette {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* FIN - Responsive */
+
+</style>
+
+</head>
+<body>
+ <header id="header">
+    <div class="container">
+        <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+        
+        <!-- BOUTON BURGER -->
+        <button type="button" class="burger-toggle" id="burgerToggle" title="Menu" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- NAVIGATION -->
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html#hero" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#about" class="nav-link">A propos</a></li>
+                <li><a href="index.html#resume" class="nav-link">Parcours</a></li>
+                <li><a href="index.html#skills" class="nav-link">Compétences</a></li>
+                <li><a href="veille.html" class="nav-link active">Veille Technologique</a></li>
+                <li class="dropdown">
+                    <a href="#">Épreuves <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="epreuve-e4.html">Épreuve E4</a></li>
+                        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+                        <li><a href="certifications.html">Certifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="loading-game.html?to=projets.html" class="nav-btn active">Projet</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- OVERLAY -->
+<div class="menu-overlay" id="menuOverlay"></div>
+     <!-- fin  -->
+
+    <!-- SECTION PROJETS -->
+    <section id="projets-page">
+        <div class="container">
+            <div class="section-header">
+                <h2>MES PROJETS</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <p class="projets-intro">
+                Découvrez les projets que j'ai réalisés durant ma formation BTS SIO SLAM, 
+                des applications web aux logiciels de bureau, en passant par la gestion de bases de données.
+            </p>
+
+            <!-- Projet en vedette -->
+            <div class="projet-vedette">
+                <div class="projet-vedette-content">
+                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 15px; display: inline-block;">
+                        <i class="fas fa-star"></i> Projet phare
+                    </span>
+                    <h3>Gestionnaire de Bibliothèque</h3>
+                    <p>
+                        Application web complète de gestion de bibliothèque permettant la gestion des livres, 
+                        des emprunts, des utilisateurs et des réservations. Interface moderne avec dashboard 
+                        administrateur et espace membre.
+                    </p>
+                    <div style="display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap;">
+                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">PHP</span>
+                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">MySQL</span>
+                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">JavaScript</span>
+                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">Bootstrap</span>
+                    </div>
+                    <a href="#" class="btn-vedette">
+                        <i class="fas fa-external-link-alt"></i> Voir le projet
+                    </a>
+                </div>
+                <div class="projet-vedette-image">
+                    <img src="https://via.placeholder.com/600x400/3B5F8A/FFFFFF?text=Projet+Bibliothèque" alt="Projet Bibliothèque">
+                </div>
+            </div>
+
+            <!-- Filtres -->
+            <div class="projets-filtres">
+                <button class="filtre-btn active" data-filter="tous">Tous</button>
+                <button class="filtre-btn" data-filter="web">Web</button>
+                <button class="filtre-btn" data-filter="desktop">Desktop</button>
+                <button class="filtre-btn" data-filter="mobile">Mobile</button>
+                <button class="filtre-btn" data-filter="bdd">Base de données</button>
+            </div>
+
+            <!-- Grid des projets -->
+            <div class="projets-grid">
+                <!-- Projet 1 -->
+                <div class="projet-card" data-category="web">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/10b981/FFFFFF?text=Site+E-commerce" alt="Projet E-commerce">
+                        <span class="projet-type">Web</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Site E-commerce</h3>
+                        <p>Plateforme de vente en ligne avec panier d'achat, paiement sécurisé et espace administrateur.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Déc. 2024</span>
+                            <span class="projet-statut termine"><i class="fas fa-check-circle"></i> Terminé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="projet-card" data-category="desktop">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/8b5cf6/FFFFFF?text=Gestion+Stock" alt="Projet Gestion Stock">
+                        <span class="projet-type">Desktop</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Voir la démo"><i class="fas fa-play"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Gestion de Stock</h3>
+                        <p>Application de bureau pour la gestion des stocks, alertes de réapprovisionnement et rapports.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JavaFX</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Nov. 2024</span>
+                            <span class="projet-statut termine"><i class="fas fa-check-circle"></i> Terminé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="projet-card" data-category="web">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/0ea5e9/FFFFFF?text=API+REST" alt="Projet API">
+                        <span class="projet-type">Web</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Documentation"><i class="fas fa-book"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>API REST Task Manager</h3>
+                        <p>API RESTful pour la gestion de tâches avec authentification JWT et documentation Swagger.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Jan. 2025</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner"></i> En cours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 4 -->
+                <div class="projet-card" data-category="mobile">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/f59e0b/FFFFFF?text=App+Météo" alt="Projet Météo">
+                        <span class="projet-type">Mobile</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Voir l'app"><i class="fas fa-mobile-alt"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Application Météo</h3>
+                        <p>Application mobile affichant les prévisions météo avec géolocalisation et favoris.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">API Météo</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Fév. 2025</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner"></i> En cours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 5 -->
+                <div class="projet-card" data-category="bdd">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/ec4899/FFFFFF?text=Base+de+Données" alt="Projet BDD">
+                        <span class="projet-type">BDD</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Voir le schéma"><i class="fas fa-database"></i></a>
+                            <a href="#" class="projet-link" title="Scripts SQL"><i class="fas fa-code"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Conception BDD Cinéma</h3>
+                        <p>Modélisation et implémentation d'une base de données pour une chaîne de cinémas.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Merise</span>
+                            <span class="tech-tag">SQL</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Oct. 2024</span>
+                            <span class="projet-statut termine"><i class="fas fa-check-circle"></i> Terminé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 6 -->
+                <div class="projet-card" data-category="web">
+                    <div class="projet-image">
+                        <img src="apercu portefolio.jpg" alt="Projet Portfolio">
+                        <span class="projet-type">Web</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Portfolio Personnel</h3>
+                        <p>Ce portfolio que vous consultez actuellement, développé en HTML, CSS et JavaScript vanilla.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> En continu</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner"></i> En évolution</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- FIN - Section projets -->
+
+ <!-- SECTION CONTACT RGPD -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info-side">
+                <h2>Travaillons ensemble</h2>
+                <p>Un projet ? Une question ? Discutons-en.</p>
+                
+                <div class="contact-quick-links">
+                    <a href="mailto:diantalouaime242@gmail.com" class="contact-chip">
+                        <i class="fas fa-envelope"></i>
+                        <span>diantalouaime242@gmail.com</span>
+                    </a>
+                    
+                    <a href="tel:+33775863565" class="contact-chip">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 7 75 86 35 65</span>
+                    </a>
+                    
+                    <div class="contact-chip location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Toulouse, France</span>
+                    </div>
+                </div>
+
+                <div class="contact-social-mini">
+                    <a href="https://www.linkedin.com/in/aim%C3%A9-tabriz-winner-diantalou-samba-8b098a353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/WinterPR19" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-side">
+                <form id="contactForm" class="form-compact" action="https://formspree.io/f/mnjbnenk" method="POST">
+                    <!-- Protection anti-spam cachée -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <div class="form-row-compact">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="text" name="sujet" placeholder="Sujet" required>
+                    <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
+                    
+                    <!-- Case à cocher RGPD -->
+                    <!-- Case à cocher RGPD -->
+<div class="rgpd-consent">
+    <label class="rgpd-label">
+        <input type="checkbox" name="rgpd" id="rgpdCheck" required>
+        <span class="checkmark"></span>
+        <span class="rgpd-text">
+            J'accepte que mes données personnelles soient traitées conformément à la 
+            <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> 
+            et au RGPD. Ces données ne seront utilisées que pour répondre à ma demande.
+        </span>
+    </label>
+    <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité pour envoyer le message.</div>
+</div>
+                    
+                    <button type="submit" class="btn-send" id="submitBtn">
+                        <span>Envoyer</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <!-- Message de confirmation -->
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+  <!-- FIN - Section contact RGPD -->
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+                    <p class="footer-tagline">Développeur en formation</p>
+                </div>
+                
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#resume">Parcours</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="veille.html">Veille</a>
+                    <a href="#contact">Contact</a>
+                 
+                </nav>
+                
+                <div class="footer-copy">
+                    <p>&copy; 2026 Aimé Diantalou-samba</p>
+                    <span class="footer-heart">Fait avec <i class="fas fa-heart"></i> à Toulouse</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FIN - Footer -->
+     
+ <!-- BOUTON BACK TO TOP -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="main.js"></script>
+    <script>
+        // Filtres des projets
+        const filtreBtns = document.querySelectorAll('.filtre-btn');
+        const projetCards = document.querySelectorAll('.projet-card');
+        
+        filtreBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Active le bouton cliqué
+                filtreBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                // Filtre les projets
+                projetCards.forEach(card => {
+                    if (filter === 'tous' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

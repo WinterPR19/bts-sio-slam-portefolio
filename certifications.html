@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications ⎟ Aimé Diantalou-samba</title>
+    <meta name="description" content="Mes certifications - Portfolio BTS SIO SLAM">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+#certifications-page { padding: 120px 0 80px; background: var(--bg-light); min-height: 60vh; }
+
+#certifications-page .section-header { text-align: center; margin-bottom: 50px; }
+
+.certifications-intro { max-width: 800px; margin: 0 auto 50px; text-align: center; color: #64748b; font-size: 1.1rem; line-height: 1.8; }
+
+.certifications-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+
+.certification-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.certification-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
+.certification-header { padding: 30px; color: white; position: relative; overflow: hidden; }
+
+.certification-header::before {
+    content: ''; position: absolute; top: -50%; right: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+}
+
+.certification-card.obtenue .certification-header { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.certification-card.en-cours .certification-header { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+.certification-card.a-venir .certification-header { background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); }
+
+.certification-status {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 600; backdrop-filter: blur(10px);
+}
+
+.certification-icon { font-size: 3rem; margin-bottom: 15px; opacity: 0.9; }
+
+.certification-header h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; }
+.certification-header .organisme { font-size: 0.9rem; opacity: 0.9; }
+
+.certification-body { padding: 30px; }
+.certification-body p { color: #64748b; margin-bottom: 20px; line-height: 1.7; }
+
+.certification-details { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+
+.detail-item { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: #475569; }
+.detail-item i { width: 20px; color: var(--primary-color); }
+
+.certification-actions { display: flex; gap: 10px; }
+
+.btn-certif {
+    flex: 1; padding: 12px; border-radius: 10px;
+    text-align: center; font-weight: 600; font-size: 0.9rem;
+    transition: all 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+.btn-certif.primary { background: var(--primary-color); color: white; }
+.btn-certif.primary:hover { background: var(--primary-dark); }
+.btn-certif.secondary { background: #f1f5f9; color: #475569; }
+.btn-certif.secondary:hover { background: #e2e8f0; }
+
+.certifications-timeline { max-width: 800px; margin: 60px auto 0; }
+
+.timeline-title { text-align: center; font-size: 1.5rem; color: var(--primary-color); margin-bottom: 30px; }
+
+.timeline-list { position: relative; padding-left: 30px; }
+
+.timeline-list::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, #10b981, #3b82f6, #6b7280);
+}
+
+.timeline-item-certif { position: relative; padding-bottom: 30px; }
+
+.timeline-item-certif::before {
+    content: ''; position: absolute; left: -26px; top: 5px;
+    width: 16px; height: 16px; border-radius: 50%; border: 3px solid white;
+    box-shadow: 0 0 0 3px;
+}
+
+.timeline-item-certif.obtenue::before { background: #10b981; box-shadow: 0 0 0 3px #10b981; }
+.timeline-item-certif.en-cours::before { background: #3b82f6; box-shadow: 0 0 0 3px #3b82f6; }
+.timeline-item-certif.a-venir::before { background: #6b7280; box-shadow: 0 0 0 3px #6b7280; }
+
+.timeline-content-certif { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+.timeline-content-certif h4 { color: var(--text-dark); margin-bottom: 5px; }
+.timeline-content-certif span { font-size: 0.85rem; color: #94a3b8; }
+</style>
+
+</head>
+<body>
+   <header id="header">
+    <div class="container">
+        <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+        
+        <!-- BOUTON BURGER -->
+        <button type="button" class="burger-toggle" id="burgerToggle" title="Menu" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- NAVIGATION -->
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html#hero" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#about" class="nav-link">A propos</a></li>
+                <li><a href="index.html#resume" class="nav-link">Parcours</a></li>
+                <li><a href="index.html#skills" class="nav-link">Compétences</a></li>
+                <li><a href="veille.html" class="nav-link active">Veille Technologique</a></li>
+                <li class="dropdown">
+                    <a href="#">Épreuves <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="epreuve-e4.html">Épreuve E4</a></li>
+                        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+                    <li><a href="certifications.html" class="active">Certifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="loading-game.html?to=projets.html" class="nav-btn">Projet</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- OVERLAY (ajoutez ça juste après le header) -->
+<div class="menu-overlay" id="menuOverlay"></div>
+     <!-- fin  -->
+
+    <!-- SECTION CERTIFICATIONS -->
+    <section id="certifications-page">
+        <div class="container">
+            <div class="section-header">
+                <h2>MES CERTIFICATIONS</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <p class="certifications-intro">
+                Au cours de ma formation BTS SIO, j'ai passé et préparé plusieurs certifications 
+                professionnelles pour renforcer mes compétences et valider mes acquis.
+            </p>
+
+            <!-- Grid des certifications -->
+            <div class="certifications-grid">
+                <!-- Certification 1 : Obtenue -->
+                <div class="certification-card obtenue">
+                    <div class="certification-header">
+                        <span class="certification-status"><i class="fas fa-check-circle"></i> Obtenue</span>
+                        <div class="certification-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h3>HTML5 & CSS3</h3>
+                        <span class="organisme">OpenClassrooms / Sololearn</span>
+                    </div>
+                    <div class="certification-body">
+                        <p>Certification validant les compétences en création de pages web statiques, 
+                        structuration sémantique et mise en forme avec CSS3.</p>
+                        
+                        <div class="certification-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Obtenue en : Octobre 2023</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Durée : 20 heures de formation</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-star"></i>
+                                <span>Niveau : Intermédiaire</span>
+                            </div>
+                        </div>
+                        
+                        <div class="certification-actions">
+                            <a href="#" class="btn-certif primary">
+                                <i class="fas fa-eye"></i> Voir
+                            </a>
+                            <a href="#" class="btn-certif secondary">
+                                <i class="fas fa-download"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 2 : Obtenue -->
+                <div class="certification-card obtenue">
+                    <div class="certification-header">
+                        <span class="certification-status"><i class="fas fa-check-circle"></i> Obtenue</span>
+                        <div class="certification-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>RGPD / CNIL</h3>
+                        <span class="organisme">Commission Nationale Informatique et Libertés</span>
+                    </div>
+                    <div class="certification-body">
+                        <p>Certification sur la protection des données personnelles, 
+                        les obligations des responsables de traitement et les droits des personnes.</p>
+                        
+                        <div class="certification-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Obtenue en : Novembre 2023</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Durée : 6 heures</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-check"></i>
+                                <span>Score : 100% (MOOC)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="certification-actions">
+                            <a href="#" class="btn-certif primary">
+                                <i class="fas fa-eye"></i> Voir
+                            </a>
+                            <a href="#" class="btn-certif secondary">
+                                <i class="fas fa-download"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 3 : En cours -->
+                <div class="certification-card en-cours">
+                    <div class="certification-header">
+                        <span class="certification-status"><i class="fas fa-spinner fa-spin"></i> En cours</span>
+                        <div class="certification-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python Developer</h3>
+                        <span class="organisme">OpenClassrooms / Python Institute</span>
+                    </div>
+                    <div class="certification-body">
+                        <p>Certification professionnelle en développement Python, 
+                        couvrant la programmation orientée objet et les frameworks web.</p>
+                        
+                        <div class="certification-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Prévue : Mars 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Durée : 40 heures</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Niveau : Avancé</span>
+                            </div>
+                        </div>
+                        
+                        <div class="certification-actions">
+                            <a href="#" class="btn-certif primary">
+                                <i class="fas fa-book"></i> Préparer
+                            </a>
+                            <a href="#" class="btn-certif secondary">
+                                <i class="fas fa-info-circle"></i> Détails
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 4 : À venir -->
+                <div class="certification-card a-venir">
+                    <div class="certification-header">
+                        <span class="certification-status"><i class="fas fa-hourglass-half"></i> À venir</span>
+                        <div class="certification-icon">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <h3>AWS Cloud Practitioner</h3>
+                        <span class="organisme">Amazon Web Services</span>
+                    </div>
+                    <div class="certification-body">
+                        <p>Certification de base sur le cloud AWS, les services fondamentaux 
+                        et les bonnes pratiques de sécurité cloud.</p>
+                        
+                        <div class="certification-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Prévue : Juin 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Durée : Préparation 3 mois</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>Domaine : Cloud Computing</span>
+                            </div>
+                        </div>
+                        
+                        <div class="certification-actions">
+                            <a href="#" class="btn-certif secondary" style="flex: 1;">
+                                <i class="fas fa-info-circle"></i> En savoir plus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="certifications-timeline">
+                <h3 class="timeline-title"><i class="fas fa-road"></i> Parcours de certification</h3>
+                <div class="timeline-list">
+                    <div class="timeline-item-certif obtenue">
+                        <div class="timeline-content-certif">
+                            <h4>HTML5 & CSS3 - OpenClassrooms</h4>
+                            <span><i class="fas fa-check-circle"></i> Octobre 2023</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item-certif obtenue">
+                        <div class="timeline-content-certif">
+                            <h4>RGPD / CNIL - MOOC</h4>
+                            <span><i class="fas fa-check-circle"></i> Novembre 2023</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item-certif en-cours">
+                        <div class="timeline-content-certif">
+                            <h4>Python Developer</h4>
+                            <span><i class="fas fa-spinner fa-spin"></i> En préparation - Mars 2025</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item-certif a-venir">
+                        <div class="timeline-content-certif">
+                            <h4>AWS Cloud Practitioner</h4>
+                            <span><i class="fas fa-hourglass-half"></i> Prévue - Juin 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- fin  -->
+ <!-- SECTION CONTACT RGPD -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info-side">
+                <h2>Travaillons ensemble</h2>
+                <p>Un projet ? Une question ? Discutons-en.</p>
+                
+                <div class="contact-quick-links">
+                    <a href="mailto:diantalouaime242@gmail.com" class="contact-chip">
+                        <i class="fas fa-envelope"></i>
+                        <span>diantalouaime242@gmail.com</span>
+                    </a>
+                    
+                    <a href="tel:+33775863565" class="contact-chip">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 7 75 86 35 65</span>
+                    </a>
+                    
+                    <div class="contact-chip location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Toulouse, France</span>
+                    </div>
+                </div>
+
+                <div class="contact-social-mini">
+                    <a href="https://www.linkedin.com/in/aim%C3%A9-tabriz-winner-diantalou-samba-8b098a353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/WinterPR19" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-side">
+                <form id="contactForm" class="form-compact" action="https://formspree.io/f/mnjbnenk" method="POST">
+                    <!-- Protection anti-spam cachée -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <div class="form-row-compact">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="text" name="sujet" placeholder="Sujet" required>
+                    <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
+                    
+                    <!-- Case à cocher RGPD -->
+                    <!-- Case à cocher RGPD -->
+<div class="rgpd-consent">
+    <label class="rgpd-label">
+        <input type="checkbox" name="rgpd" id="rgpdCheck" required>
+        <span class="checkmark"></span>
+        <span class="rgpd-text">
+            J'accepte que mes données personnelles soient traitées conformément à la 
+            <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> 
+            et au RGPD. Ces données ne seront utilisées que pour répondre à ma demande.
+        </span>
+    </label>
+    <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité pour envoyer le message.</div>
+</div>
+                    
+                    <button type="submit" class="btn-send" id="submitBtn">
+                        <span>Envoyer</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <!-- Message de confirmation -->
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- fin  -->
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="footer-brand">
+                   <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+                    <p class="footer-tagline">Développeur en formation</p>
+                </div>
+                
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#resume">Parcours</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="veille.html">Veille</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                
+                <div class="footer-copy">
+                    <p>&copy; 2026 Aimé Diantalou-samba</p>
+                    <span class="footer-heart">Fait avec <i class="fas fa-heart"></i> à Toulouse</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="main.js"></script>
+</body>
+</html>

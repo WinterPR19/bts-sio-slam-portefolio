@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Technologique ⎟ Aimé Diantalou-samba</title>
+    <meta name="description" content="Ma veille technologique sur le Green IT - Portfolio BTS SIO SLAM">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+/* ============================================
+   1. VARIABLES COULEURS GREEN IT
+   ============================================ */
+:root {
+    --green-primary: #2e7d32; --green-dark: #1b5e20; --green-light: #4caf50;
+    --green-accent: #8bc34a; --green-pale: #c8e6c9; --green-bg: #e8f5e9;
+    --orange-accent: #ff9800; --orange-dark: #e65100; --text-dark: #1b5e20;
+    --text-light: #ffffff; --bg-white: rgba(255, 255, 255, 0.95);
+    --sky-deep: var(--green-dark); --sky-blue: var(--green-primary);
+    --sunset-orange: var(--orange-accent); --sunset-gold: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: var(--text-dark); }
+/* FIN - Variables */
+
+/* ============================================
+   2. HEADER ET NAVIGATION
+   ============================================ */
+#header {
+background: linear-gradient(90deg, var(--forest-black), var(--deep-emerald), var(--electric-green), var(--neon-mint));
+padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000;
+box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3); height: 70px; transition: all 0.3s ease;
+}
+#header .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 100%; }
+.logo {
+    font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800;
+    background: linear-gradient(90deg, #a5d6a7, #ffffff, #c8e6c9);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    text-decoration: none; letter-spacing: -1px; position: relative;
+}
+.logo::after { content: '🌱'; position: absolute; right: -30px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; -webkit-text-fill-color: initial; }
+.burger-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1002; position: relative; }
+.burger-toggle span { display: block; width: 100%; height: 3px; background: var(--text-light); border-radius: 3px; transition: all 0.3s ease; transform-origin: center; }
+.burger-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+.burger-toggle.active span:nth-child(2) { opacity: 0; }
+.burger-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+#navbar {
+    display: flex; position: fixed; top: 70px; right: -100%; width: 350px; max-width: 90%;
+    height: calc(100vh - 70px); background: linear-gradient(180deg, var(--green-dark) 0%, var(--green-primary) 100%);
+    flex-direction: column; padding: 40px 30px; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3); overflow-y: auto; z-index: 1001;
+}
+#navbar.active { right: 0; }
+#navbar ul { flex-direction: column; width: 100%; gap: 8px; list-style: none; margin: 0; padding: 0; }
+#navbar ul li { width: 100%; position: relative; opacity: 0; transform: translateX(30px); transition: all 0.3s ease; }
+#navbar.active ul li { opacity: 1; transform: translateX(0); }
+#navbar.active ul li:nth-child(1) { transition-delay: 0.1s; }
+#navbar.active ul li:nth-child(2) { transition-delay: 0.15s; }
+#navbar.active ul li:nth-child(3) { transition-delay: 0.2s; }
+#navbar.active ul li:nth-child(4) { transition-delay: 0.25s; }
+#navbar.active ul li:nth-child(5) { transition-delay: 0.3s; }
+#navbar.active ul li:nth-child(6) { transition-delay: 0.35s; }
+#navbar.active ul li:nth-child(7) { transition-delay: 0.4s; }
+#navbar ul li a {
+    color: var(--text-light); padding: 15px 20px; font-size: 1rem; transition: all 0.3s;
+    display: flex; align-items: center; gap: 10px; text-decoration: none; border-radius: 25px;
+}
+#navbar ul li a:hover, #navbar ul li a.active { color: #ffffff; background: rgba(255, 255, 255, 0.15); }
+#navbar .dropdown { position: relative; width: 100%; }
+#navbar .dropdown > a { position: relative; width: 100%; justify-content: space-between !important; }
+#navbar .dropdown > a::after { content: '▼'; font-size: 0.7rem; margin-left: 10px; transition: transform 0.3s; }
+#navbar .dropdown.active > a::after { transform: rotate(180deg); }
+#navbar .dropdown-menu {
+    position: relative; display: none; width: 100%; background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px; margin-top: 5px; padding: 10px 0; box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2); z-index: 10;
+}
+#navbar .dropdown.active .dropdown-menu { display: block; animation: slideDown 0.3s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+#navbar .dropdown-menu li { width: 100%; list-style: none; }
+#navbar .dropdown-menu li a { padding: 12px 20px 12px 40px !important; display: block !important; font-size: 0.9rem !important; color: rgba(255, 255, 255, 0.9) !important; transition: all 0.3s; position: relative; border-radius: 0 !important; }
+#navbar .dropdown-menu li a::before { content: '→'; position: absolute; left: 20px; opacity: 0; transition: all 0.3s; }
+#navbar .dropdown-menu li a:hover { background: rgba(255, 255, 255, 0.1) !important; color: #ffffff !important; padding-left: 45px !important; }
+#navbar .dropdown-menu li a:hover::before { opacity: 1; left: 25px; }
+.nav-btn {
+    background: linear-gradient(90deg, var(--orange-accent), #ffc107) !important; color: var(--green-dark) !important;
+    font-weight: 700 !important; border: 2px solid transparent !important; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+.nav-btn:hover { transform: translateY(-2px) scale(1.05) !important; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.5) !important; }
+.menu-overlay { position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px); background: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
+.menu-overlay.active { opacity: 1; visibility: visible; }
+#header.scrolled { height: 60px; box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3); }
+#header.scrolled .logo { font-size: 1.5rem; }
+#header.scrolled .logo::after { font-size: 1rem; right: -25px; }
+#header.scrolled + .menu-overlay, #header.scrolled ~ #navbar { top: 60px; height: calc(100vh - 60px); }
+#navbar .dropdown:hover .dropdown-menu { display: none; }
+#navbar .dropdown.active .dropdown-menu { display: block; }
+.mobile-nav-toggle { display: none; }
+/* FIN - Header */
+
+/* ============================================
+   3. SECTION VEILLE - HERO
+   ============================================ */
+#veille-page {
+    padding: 120px 0 80px; min-height: 60vh; position: relative; overflow: hidden;
+    isolation: isolate; background-image: url('https://www.novacomputersolutions.com/wp-content/uploads/2024/07/Green-Technology.jpg');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    background-repeat: no-repeat; background-color: var(--green-dark);
+}
+#veille-page::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); pointer-events: none; z-index: 0; }
+#veille-page::after { content: '🍃'; position: absolute; font-size: 120px; opacity: 0.08; bottom: 50px; right: 50px; transform: rotate(15deg); pointer-events: none; z-index: 0; animation: float 6s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: rotate(15deg) translateY(0px); } 50% { transform: rotate(20deg) translateY(-20px); } }
+.leaf-decoration { position: absolute; font-size: 100px; opacity: 0.06; top: 100px; left: 50px; transform: rotate(-15deg); pointer-events: none; z-index: 0; animation: float 8s ease-in-out infinite reverse; }
+#veille-page > .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+#veille-page .section-header {
+    text-align: center; margin-bottom: 50px; position: relative; z-index: 1;
+    background: rgba(255, 255, 255, 0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: 30px;
+    border-radius: 20px; box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1); border: 2px solid var(--green-pale);
+}
+#veille-page .section-header h2 {
+    font-family: 'Poppins', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--green-dark);
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;
+    display: flex; align-items: center; justify-content: center; gap: 15px;
+}
+#veille-page .section-header h2::before { content: '🌱'; font-size: 2.5rem; }
+#veille-page .section-header p { font-size: 1.2rem; color: var(--green-primary); font-weight: 500; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+#veille-page .underline { width: 120px; height: 4px; background: linear-gradient(90deg, var(--green-light), var(--green-accent), var(--orange-accent)); margin: 20px auto 0; border-radius: 2px; }
+/* FIN - Hero */
+
+/* ============================================
+   4. BOÎTE PROBLÉMATIQUE
+   ============================================ */
+.problematique-box {
+    background: rgba(255, 243, 224, 0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-left: 5px solid var(--orange-accent);
+    padding: 30px; border-radius: 0 20px 20px 0; margin: 40px auto; max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.problematique-box::before {
+    content: '❓'; position: absolute; top: -15px; left: 30px;
+    background: linear-gradient(135deg, var(--orange-accent), #ffc107); width: 40px; height: 40px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; box-shadow: 0 4px 15px rgba(255,152,0,0.4);
+}
+.problematique-box h3 { color: var(--orange-dark); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; margin-top: 10px; }
+.problematique-box p { color: #5d4037; font-size: 1.15rem; font-weight: 600; line-height: 1.6; font-style: italic; }
+/* FIN - Problématique */
+
+/* ========== ANIMATIONS FUTURISTES V2 ========== */
+#veille-page .section-header { animation: warpIn 0.8s ease-out, antiGravity 5s ease-in-out infinite 0.8s; }
+@keyframes warpIn { 0% { opacity: 0; transform: scale(3) rotate(-10deg); filter: blur(20px) brightness(3); } 100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0) brightness(1); } }
+@keyframes antiGravity { 0%, 100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-12px) rotate(1deg); } 50% { transform: translateY(-5px) rotate(-1deg); } 75% { transform: translateY(-15px) rotate(0.5deg); } }
+#veille-page .section-header h2::before { animation: morphing 4s ease-in-out infinite; }
+@keyframes morphing { 0%, 100% { transform: scale(1) rotate(0); content: '🌱'; } 25% { transform: scale(1.3) rotate(90deg); content: '🌿'; } 50% { transform: scale(1) rotate(180deg); content: '🍃'; } 75% { transform: scale(1.3) rotate(270deg); content: '🌿'; } }
+.problematique-box { animation: teleportIn 1s cubic-bezier(0.68,-0.55,0.265,1.55), magneticPulse 4s ease-in-out infinite 1s; }
+@keyframes teleportIn { 0% { opacity: 0; transform: scale(0) rotateY(180deg); filter: hue-rotate(180deg); } 50% { transform: scale(1.1) rotateY(-10deg); } 100% { opacity: 1; transform: scale(1) rotateY(0); filter: hue-rotate(0); } }
+@keyframes magneticPulse { 0%, 100% { transform: translateY(0); box-shadow: 0 0 0 rgba(255,152,0,0), 0 10px 30px rgba(0,0,0,0.1); } 50% { transform: translateY(-10px); box-shadow: 0 0 30px rgba(255,152,0,0.4), 0 20px 50px rgba(255,152,0,0.2), inset 0 0 20px rgba(255,255,255,0.1); } }
+.problematique-box::before { animation: quantumOrb 3s ease-in-out infinite; }
+@keyframes quantumOrb { 0%, 100% { transform: scale(1); box-shadow: 0 0 10px #ff9800, 0 0 20px #ff9800, 0 0 40px #ff9800; } 50% { transform: scale(1.2); box-shadow: 0 0 20px #ff9800, 0 0 40px #ff9800, 0 0 80px #ff9800, 0 0 100px #ffc107; } }
+/* ============================================
+   5. ACCORDÉON VEILLE - COMPACT
+   ============================================ */
+.veille-accordion { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
+.veille-accordion-item {
+    background: rgba(255, 255, 255, 0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border-radius: 20px; margin-bottom: 20px; overflow: hidden; border: 2px solid var(--green-pale);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: slideInUp 0.6s ease-out forwards; opacity: 0;
+}
+
+.veille-accordion-item:nth-child(1) { animation-delay: 0.1s; }
+.veille-accordion-item:nth-child(2) { animation-delay: 0.2s; }
+.veille-accordion-item:nth-child(3) { animation-delay: 0.3s; }
+.veille-accordion-item:nth-child(4) { animation-delay: 0.4s; }
+.veille-accordion-item:nth-child(5) { animation-delay: 0.5s; }
+.veille-accordion-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp { 
+    from { opacity: 0; transform: translateY(50px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+.veille-accordion-item:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
+
+.veille-accordion-item.active {
+    background: rgba(255, 255, 255, 0.95); border-color: var(--green-primary);
+    box-shadow: 0 20px 50px rgba(76, 175, 80, 0.2);
+}
+
+.veille-accordion-header {
+    display: flex; align-items: center; gap: 20px; padding: 25px 30px;
+    cursor: pointer; transition: all 0.3s ease; -webkit-user-select: none; user-select: none;
+}
+
+.veille-accordion-item.active .veille-accordion-header {
+    background: linear-gradient(135deg, rgba(232, 245, 233, 0.9) 0%, rgba(200, 230, 201, 0.9) 100%);
+}
+
+.veille-accordion-header i:first-child {
+    width: 50px; height: 50px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--green-light), var(--green-accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; color: white; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+}
+
+.veille-accordion-item.active .veille-accordion-header i:first-child {
+    background: linear-gradient(135deg, var(--green-dark), var(--green-light));
+    animation: pulseGreen 2s ease infinite;
+}
+
+@keyframes pulseGreen { 
+    0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); } 
+    50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5); } 
+}
+
+.veille-accordion-header span { font-size: 1.15rem; font-weight: 600; flex: 1; line-height: 1.4; color: var(--green-dark); }
+
+.veille-accordion-icon {
+    width: 35px; height: 35px; border-radius: 50%;
+    background: rgba(76, 175, 80, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-size: 0.9rem; color: var(--green-light);
+}
+
+.veille-accordion-item.active .veille-accordion-icon { transform: rotate(180deg); background: var(--green-light); color: white; }
+
+.veille-accordion-content {
+    max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s ease, padding 0.3s ease;
+    color: #444; font-size: 1rem; line-height: 1.8; padding: 0 30px;
+}
+
+.veille-accordion-item.active .veille-accordion-content { max-height: 2000px; opacity: 1; padding: 0 30px 30px; }
+/* FIN - Accordéon */
+
+/* ============================================
+   6. STATISTIQUES ET TABLEAU
+   ============================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 25px 0; }
+.stat-card {
+    background: linear-gradient(135deg, var(--green-bg), var(--green-pale)); padding: 20px;
+    border-radius: 15px; text-align: center; border: 2px solid var(--green-pale); box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.stat-number { font-size: 2rem; font-weight: 800; color: var(--green-dark); display: block; }
+.stat-label { font-size: 0.85rem; color: var(--green-primary); margin-top: 5px; }
+.veille-data-table {
+    width: 100%; border-collapse: collapse; margin: 20px 0;
+    background: rgba(255, 255, 255, 0.9); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.veille-data-table th {
+    background: linear-gradient(135deg, var(--green-light), var(--green-primary));
+    color: white; padding: 15px; text-align: left; font-weight: 600;
+}
+.veille-data-table td { padding: 12px 15px; border-bottom: 1px solid var(--green-pale); }
+.veille-data-table tr:hover { background: var(--green-bg); }
+.veille-accordion-content ul { list-style: none; padding: 0; margin: 15px 0; }
+.veille-accordion-content ul li { padding: 12px 0 12px 40px; position: relative; border-bottom: 1px dashed rgba(76, 175, 80, 0.2); transition: all 0.3s; }
+.veille-accordion-content ul li:hover { padding-left: 45px; color: var(--green-dark); }
+.veille-accordion-content ul li::before { content: '🌱'; position: absolute; left: 0; font-size: 1.3rem; }
+/* FIN - Stats */
+
+/* ============================================
+   7. DOCUMENTS BENTO
+   ============================================ */
+.documents-bento { margin-top: 60px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; position: relative; z-index: 1; }
+.bento-card {
+    background: rgba(255, 255, 255, 0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-radius: 24px;
+    padding: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative; overflow: hidden; border: 2px solid var(--green-pale);
+}
+.bento-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--green-light), var(--green-accent), var(--orange-accent)); }
+.bento-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); border-color: var(--green-light); }
+.bento-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.5rem; color: var(--green-dark); margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
+.bento-card h3 i {
+    width: 50px; height: 50px; background: linear-gradient(135deg, var(--green-light), var(--green-accent));
+    border-radius: 15px; display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1.3rem; box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+.bento-card p { color: #666; margin-bottom: 25px; line-height: 1.7; }
+/* FIN - Bento */
+
+/* ============================================
+   8. BOUTONS
+   ============================================ */
+.btn-veille { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; font-family: inherit; }
+.btn-veille-primary {
+    background: linear-gradient(135deg, var(--green-light), var(--green-accent)); color: white;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+.btn-veille-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(76, 175, 80, 0.5); }
+.btn-veille-secondary { background: transparent; color: var(--green-dark); border: 2px solid var(--green-light); }
+.btn-veille-secondary:hover { background: var(--green-light); color: white; transform: translateY(-3px); }
+/* FIN - Boutons */
+
+/* ============================================
+   9. CONTACT
+   ============================================ */
+#contact {
+    padding: 80px 0; background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #AFB42B 100%);
+    position: relative; overflow: hidden;
+}
+#contact::before { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(224, 123, 57, 0.15) 0%, transparent 70%); top: -150px; right: -150px; border-radius: 50%; }
+#contact::after { content: ''; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(244, 166, 35, 0.1) 0%, transparent 70%); bottom: -100px; left: -100px; border-radius: 50%; }
+#contact .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+.contact-compact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; max-width: 1000px; margin: 0 auto; }
+.contact-info-side h2 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: white; font-weight: 700; margin-bottom: 15px; }
+.contact-info-side > p { color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; margin-bottom: 30px; }
+.contact-quick-links { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+.contact-chip {
+    display: inline-flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: 12px 20px; border-radius: 50px; color: white;
+    font-size: 0.95rem; text-decoration: none; transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2); width: fit-content;
+}
+.contact-chip:hover { background: rgba(224, 123, 57, 0.3); border-color: #E07B39; transform: translateX(8px); }
+.contact-chip i { color: #F4A623; font-size: 1rem; width: 20px; text-align: center; }
+.contact-social-mini { display: flex; gap: 15px; }
+.contact-social-mini a {
+    width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.1);
+    display: flex; align-items: center; justify-content: center; color: white;
+    font-size: 1.1rem; transition: all 0.3s; border: 1px solid rgba(255, 255, 255, 0.2); text-decoration: none;
+}
+.contact-social-mini a:hover { background: #E07B39; transform: translateY(-3px) scale(1.1); border-color: #E07B39; }
+.contact-form-side { background: rgba(255, 255, 255, 0.95); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); padding: 40px; border-radius: 24px; box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.5); }
+.form-compact { display: flex; flex-direction: column; gap: 20px; }
+.form-row-compact { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.form-compact input, .form-compact textarea { width: 100%; padding: 14px 18px; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 1rem; background: white; transition: all 0.3s; color: #333; }
+.form-compact input:focus, .form-compact textarea:focus { outline: none; border-color: #E07B39; box-shadow: 0 0 0 4px rgba(224, 123, 57, 0.1); }
+.form-compact input::placeholder, .form-compact textarea::placeholder { color: #94a3b8; }
+.form-compact textarea { resize: none; min-height: 120px; }
+.rgpd-consent { margin: 10px 0; padding: 20px; background: rgba(46, 125, 50, 0.05); border-radius: 12px; border: 1px solid rgba(46, 125, 50, 0.1); }
+.rgpd-label { display: flex; align-items: flex-start; gap: 15px; cursor: pointer; font-size: 0.85rem; color: #475569; line-height: 1.6; }
+.rgpd-label input[type="checkbox"] { display: none; }
+.checkmark { width: 22px; height: 22px; min-width: 22px; border: 2px solid #2e7d32; border-radius: 6px; margin-top: 2px; position: relative; transition: all 0.3s; background: white; }
+.rgpd-label input:checked + .checkmark { background: #E07B39; border-color: #E07B39; }
+.rgpd-label input:checked + .checkmark::after { content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 14px; font-weight: bold; }
+.rgpd-text a { color: #E07B39; text-decoration: underline; font-weight: 600; }
+.rgpd-text a:hover { color: #2e7d32; }
+.rgpd-error { color: #ef4444; font-size: 0.8rem; margin-top: 8px; display: none; }
+.rgpd-error.show { display: block; }
+.btn-send {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: linear-gradient(90deg, #E07B39, #F4A623); color: white; border: none;
+    padding: 16px 32px; border-radius: 50px; font-size: 1.1rem; font-weight: 600;
+    cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 25px rgba(224, 123, 57, 0.4); margin-top: 10px;
+}
+.btn-send:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(224, 123, 57, 0.5); }
+.btn-send:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-send i { transition: transform 0.3s; }
+.btn-send:hover:not(:disabled) i { transform: translateX(5px) rotate(-45deg); }
+.btn-send.loading { background: #94a3b8; }
+.btn-send.loading i { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.form-status { margin-top: 20px; padding: 16px; border-radius: 12px; font-size: 0.95rem; text-align: center; display: none; }
+.form-status.success { display: block; background: rgba(16, 185, 129, 0.1); color: #059669; border: 1px solid rgba(16, 185, 129, 0.2); }
+.form-status.error { display: block; background: rgba(239, 68, 68, 0.1); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.2); }
+/* FIN - Contact */
+
+/* ============================================
+   10. FOOTER
+   ============================================ */
+#footer { background: #0f172a; padding: 40px 0 30px; border-top: 3px solid transparent; border-image: linear-gradient(90deg, #4caf50, #8bc34a) 1; }
+#footer .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.footer-simple { display: flex; flex-direction: column; align-items: center; gap: 25px; text-align: center; }
+.footer-brand { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.footer-logo-link { display: flex; align-items: center; justify-content: center; height: 60px; transition: all 0.3s ease; text-decoration: none; }
+.footer-logo-link:hover { transform: scale(1.08); }
+.footer-logo-img { height: 100%; width: auto; max-width: 200px; object-fit: contain; filter: brightness(0.9) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3)); transition: all 0.3s ease; }
+.footer-logo-link:hover .footer-logo-img { filter: brightness(1.1) drop-shadow(0 0 15px rgba(139, 195, 74, 0.4)); }
+.footer-tagline { color: #64748b; font-size: 0.95rem; font-style: italic; }
+.footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+.footer-nav a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s; position: relative; }
+.footer-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #4caf50; transition: width 0.3s; }
+.footer-nav a:hover { color: #4caf50; }
+.footer-nav a:hover::after { width: 100%; }
+.footer-copy { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.footer-copy p { color: #475569; font-size: 0.85rem; margin: 0; }
+.footer-heart { color: #64748b; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.footer-heart i { color: #4caf50; font-size: 0.75rem; animation: heartbeat 2s infinite; }
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 10%, 30% { transform: scale(1.1); } 20%, 40% { transform: scale(1); } }
+/* FIN - Footer */
+
+/* ============================================
+   11. BACK TO TOP
+   ============================================ */
+.back-to-top {
+    position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+    background: var(--green-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    opacity: 0; visibility: hidden; transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); text-decoration: none; z-index: 999;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--green-dark); transform: translateY(-5px); }
+/* FIN - Back to top */
+
+/* ============================================
+   12. HONEYPOT FIELD
+   ============================================ */
+.honeypot { display: none; }
+/* FIN - Honeypot */
+
+/* ============================================
+   13. RESPONSIVE
+   ============================================ */
+@media (max-width: 992px) {
+    .contact-compact { grid-template-columns: 1fr; gap: 50px; max-width: 600px; }
+    .contact-info-side { text-align: center; }
+    .contact-quick-links { align-items: center; }
+    .contact-chip:hover { transform: translateX(0) scale(1.02); }
+    .contact-social-mini { justify-content: center; }
+}
+@media (max-width: 768px) {
+    #header { padding: 12px 0; }
+    .logo { font-size: 1.6rem; }
+    .logo::after { display: none; }
+    #navbar { position: fixed; top: 60px; left: -100%; width: 100%; height: calc(100vh - 60px); background: var(--green-dark); transition: left 0.3s; overflow-y: auto; }
+    #navbar.active { left: 0; }
+    #navbar ul { flex-direction: column; padding: 20px; gap: 10px; }
+    #navbar ul li { width: 100%; }
+    #navbar ul li a { padding: 15px; display: block; border-radius: 10px; }
+    .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; display: none; background: rgba(0,0,0,0.2); box-shadow: none; }
+    .dropdown.active .dropdown-menu { display: block; }
+    .mobile-nav-toggle { display: block; }
+    #veille-page { padding: 100px 0 60px; }
+    #veille-page .section-header h2 { font-size: 1.8rem; flex-direction: column; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .documents-bento { grid-template-columns: 1fr; }
+    .veille-accordion-header { padding: 20px; }
+    .veille-accordion-header span { font-size: 1rem; }
+    .contact-form-side { padding: 30px 25px; }
+    .form-row-compact { grid-template-columns: 1fr; }
+    .contact-info-side h2 { font-size: 2rem; }
+    #footer { padding: 30px 0 25px; }
+    .footer-nav { gap: 20px; }
+    .footer-nav a { font-size: 0.85rem; }
+}
+@media (max-width: 480px) {
+    .contact-info-side h2 { font-size: 1.6rem; }
+    .contact-form-side { padding: 25px 20px; }
+    .btn-send { padding: 14px 24px; font-size: 1rem; }
+}
+/* FIN - Responsive */
+
+</style>
+
+<body>
+   <header id="header">
+    <div class="container">
+        <a href="index.html" class="footer-logo-link">
+                    <img src="logo.png" alt="A.D" class="footer-logo-img">
+                </a>
+        
+        <!-- BOUTON BURGER -->
+        <button type="button" class="burger-toggle" id="burgerToggle" title="Menu" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- NAVIGATION -->
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html#hero" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#about" class="nav-link">A propos</a></li>
+                <li><a href="index.html#resume" class="nav-link">Parcours</a></li>
+                <li><a href="index.html#skills" class="nav-link">Compétences</a></li>
+                <li><a href="veille.html" class="nav-link active">Veille Technologique</a></li>
+                <li class="dropdown">
+                    <a href="#">Épreuves <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="epreuve-e4.html">Épreuve E4</a></li>
+                        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+                        <li><a href="certifications.html">Certifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="loading-game.html?to=projets.html" class="nav-btn">Projet</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+</header>
+     <!-- fin du header -->
+
+<section id="veille-page">
+    <div class="leaf-decoration">🌿</div>
+    <div class="container">
+        <div class="section-header">
+            <h2>Veille Technologique</h2>
+            <div class="underline"></div>
+            <p>Green IT & Numérique Responsable - Comment réduire l'empreinte carbone du numérique tout en maintenant la performance ?</p>
+        </div>
+
+        <div class="problematique-box">
+            <h3>Problématique</h3>
+            <p>"Comment un développeur peut-il réduire l'empreinte carbone de ses applications sans sacrifier la performance et l'expérience utilisateur ?"</p>
+        </div>
+
+        <div class="veille-accordion">
+            <div class="veille-accordion-item active">
+                <div class="veille-accordion-header">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Qu'est-ce que la veille technologique ?</span>
+                    <i class="fas fa-chevron-down veille-accordion-icon"></i>
+                </div>
+                <div class="veille-accordion-content">
+                    <p>La veille technologique consiste à surveiller les évolutions techniques et les innovations dans un secteur d'activité donné...</p>
+                </div>
+            </div>
+
+            <div class="veille-accordion-item">
+                <div class="veille-accordion-header">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Quel est le but d'une veille technologique ?</span>
+                    <i class="fas fa-chevron-down veille-accordion-icon"></i>
+                </div>
+                <div class="veille-accordion-content">
+                    <ul>
+                        <li>Suivre les évolutions techniques</li>
+                        <li>Être informé des inventions et innovations des concurrents</li>
+                        <li>Diminuer les coûts de production</li>
+                        <li>Augmenter nos compétences</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="veille-accordion-item">
+                <div class="veille-accordion-header">
+                    <i class="fas fa-tools"></i>
+                    <span>Quels sont les outils de ma veille ?</span>
+                    <i class="fas fa-chevron-down veille-accordion-icon"></i>
+                </div>
+                <div class="veille-accordion-content">
+                    <p><strong>Google Actualités & Alerte :</strong> Un outil simple d'utilisation...</p>
+                    <p><strong>Feedly :</strong> Un agrégateur de flux RSS très connu...</p>
+                    <p><strong>Twitter :</strong> Une mine d'information...</p>
+                </div>
+            </div>
+
+            <div class="veille-accordion-item">
+                <div class="veille-accordion-header">
+                    <i class="fas fa-leaf"></i>
+                    <span>Thème 1 : Qu'est-ce que le Green IT et pourquoi c'est urgent ?</span>
+                    <i class="fas fa-chevron-down veille-accordion-icon"></i>
+                </div>
+                <div class="veille-accordion-content">
+                    <p>Le <strong>Green IT</strong> (ou numérique responsable) désigne l'ensemble des pratiques visant à réduire l'impact environnemental du numérique...</p>
+                    <div class="stats-grid">
+                        <div class="stat-card"><span class="stat-number">4%</span><span class="stat-label">des émissions mondiales de CO2</span></div>
+                        <div class="stat-card"><span class="stat-number">10%</span><span class="stat-label">de croissance annuelle</span></div>
+                        <div class="stat-card"><span class="stat-number">78%</span><span class="stat-label">de l'impact vient de la fabrication</span></div>
+                    </div>
+                    <h4>Les 3 périmètres du Green IT :</h4>
+                    <table class="veille-data-table">
+                        <thead><tr><th>Périmètre</th><th>Description</th><th>Exemple</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Green IT 1.0</strong></td><td>Réduire la pollution du secteur informatique</td><td>Éco-conception logicielle, serveurs verts</td></tr>
+                            <tr><td><strong>Green IT 1.5</strong></td><td>Réduire la pollution de l'organisation</td><td>Télétravail, dématérialisation</td></tr>
+                            <tr><td><strong>Green IT 2.0</strong></td><td>Utiliser le numérique pour réduire la pollution globale</td><td>Smart cities, agriculture connectée</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="veille-accordion-item">
+                <div class="veille-accordion-header">
+                    <i class="fas fa-code"></i>
+                    <span>Thème 2 : L'éco-conception logicielle</span>
+                    <i class="fas fa-chevron-down veille-accordion-icon"></i>
+                </div>
+                <div class="veille-accordion-content">
+                    <p>L'<strong>éco-conception logicielle</strong> consiste à intégrer les critères environnementaux dès la conception des applications...</p>
+                </div>
+            </div>
+
+            <div class="veille-accordion-item">
+                <div class="veille-accordion-header">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Thème 3 : La sobriété numérique en entreprise</span>
+                    <i class="fas fa-chevron-down veille-accordion-icon"></i>
+                </div>
+                <div class="veille-accordion-content">
+                    <p>Le <strong>Plan national de sobriété numérique</strong> vise à réduire de 10% la consommation énergétique...</p>
+                </div>
+            </div>
+        </div>
+        <!--fin section accordéon-->
+
+        <div class="documents-bento">
+    <div class="bento-card">
+        <h3><i class="fas fa-file-pdf"></i>Fiche de veille</h3>
+               <p>Téléchargez ma fiche de veille complète au format PDF avec toutes les sources et analyses détaillées sur le Green IT.</p>
+                <a href="fiche-veille.pdf" class="btn-veille btn-veille-primary" target="_blank"><i class="fas fa-download"></i>Télécharger PDF</a>
+             </div>
+            <div class="bento-card">
+                <h3><i class="fas fa-presentation"></i>Présentation</h3>
+                <p>Consultez ma présentation interactive sur les bonnes pratiques d'éco-conception logicielle.</p>
+                <a href="#" class="btn-veille btn-veille-secondary"><i class="fas fa-external-link-alt"></i>Voir la présentation</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--fin section veille-->
+
+<!-- Section Contact -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-compact">
+            <div class="contact-info-side">
+                <h2>Travaillons ensemble</h2>
+                <p>Un projet ? Une question ? Discutons-en.</p>
+                <div class="contact-quick-links">
+                    <a href="mailto:diantalouaime242@gmail.com" class="contact-chip"><i class="fas fa-envelope"></i><span>diantalouaime242@gmail.com</span></a>
+                    <a href="tel:+33775863565" class="contact-chip"><i class="fas fa-phone"></i><span>+33 7 75 86 35 65</span></a>
+                    <div class="contact-chip location"><i class="fas fa-map-marker-alt"></i><span>Toulouse, France</span></div>
+                </div>
+                <div class="contact-social-mini">
+                    <a href="https://www.linkedin.com/in/aim%C3%A9-tabriz-winner-diantalou-samba-8b098a353/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/WinterPR19" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="contact-form-side">
+                <form id="contactForm" class="form-compact" action="https://formspree.io/f/xnqevjdr" method="POST">
+                    <input type="text" name="_gotcha" class="honeypot">
+                    <div class="form-row-compact">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="text" name="sujet" placeholder="Sujet" required>
+                    <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
+                    <div class="rgpd-consent">
+                        <label class="rgpd-label">
+                            <input type="checkbox" name="rgpd" id="rgpdCheck" required>
+                            <span class="checkmark"></span>
+                            <span class="rgpd-text">J'accepte que mes données personnelles soient traitées conformément à la <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> et au RGPD.</span>
+                        </label>
+                        <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité.</div>
+                    </div>
+                    <button type="submit" class="btn-send" id="submitBtn"><span>Envoyer</span><i class="fas fa-paper-plane"></i></button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--fin section contact-->
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="footer-simple">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo-link"><img src="logo.png" alt="A.D" class="footer-logo-img"></a>
+                <p class="footer-tagline">Développeur en formation</p>
+            </div>
+            <nav class="footer-nav">
+                <a href="index.html">Accueil</a>
+                <a href="index.html#about">À propos</a>
+                <a href="index.html#resume">Parcours</a>
+                <a href="index.html#skills">Compétences</a>
+                <a href="veille.html">Veille</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="footer-copy">
+                <p>&copy; 2026 Aimé Diantalou-samba</p>
+                <span class="footer-heart">Fait avec <i class="fas fa-heart"></i> à Toulouse</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--fin footer-->
+
+<!-- Back to top -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+ <script src="main.js"></script>
+
+
+<script>
+// Mobile nav toggle
+document.querySelector('.burger-toggle').addEventListener('click', function() {
+    document.getElementById('navbar').classList.toggle('active');
+    document.getElementById('menuOverlay').classList.toggle('active');
+    this.classList.toggle('active');
+});
+
+ // --- BACK TO TOP ---
+    const btt = document.querySelector('.back-to-top');
+    if (btt) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                btt.classList.add('visible');
+            } else {
+                btt.classList.remove('visible');
+            }
+        });
+    }
+
+// ============================================
+// BURGER + ACCORDEON + BACK TO TOP
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- BURGER MENU ---
+    const burger = document.querySelector('.burger-toggle');
+    const nav = document.getElementById('navbar');
+    const overlay = document.getElementById('menuOverlay');
+    
+    if (burger && nav && overlay) {
+        burger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', function() {
+            burger.classList.remove('active');
+            nav.classList.remove('active');
+            this.classList.remove('active');
+        });
+        
+        document.querySelectorAll('#navbar a').forEach(link => {
+            link.addEventListener('click', function() {
+                const isDropdown = this.closest('.dropdown') && this.getAttribute('href') === '#';
+                if (!isDropdown) {
+                    burger.classList.remove('active');
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+        
+        document.querySelectorAll('#navbar .dropdown > a').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    const dropdown = this.parentElement;
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+    }
+    // --- ACCORDEON (pour la page veille) ---
+    document.querySelectorAll('.veille-accordion-item').forEach(item => {
+        const header = item.querySelector('.veille-accordion-header');
+        if (header) {
+            header.addEventListener('click', function() {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.veille-accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        }
+    });
+</script>
+</body>
+</html>

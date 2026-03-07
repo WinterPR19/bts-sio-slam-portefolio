@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fiche de Veille Technologique - Green IT</title>
+    <style>
+        @page { size: A4; margin: 1.5cm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 10.5pt; line-height: 1.5; color: #2c3e50; }
+        .header { text-align: center; border-bottom: 4px solid #1b5e20; padding-bottom: 15px; margin-bottom: 15px; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 20px; border-radius: 8px; }
+        .header h1 { color: #1b5e20; font-size: 20pt; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .header .meta { color: #2e7d32; font-size: 10pt; margin-top: 10px; }
+        .section { margin-bottom: 18px; page-break-inside: avoid; }
+        .section h2 { color: #1b5e20; font-size: 13pt; background: #e8f5e9; padding: 8px 12px; border-left: 5px solid #4caf50; margin-bottom: 10px; border-radius: 0 4px 4px 0; }
+        .section h3 { color: #2e7d32; font-size: 11pt; margin: 12px 0 6px; border-bottom: 1px dashed #a5d6a7; padding-bottom: 3px; }
+        .section h4 { color: #388e3c; font-size: 10.5pt; margin: 8px 0 4px; font-style: italic; }
+        .alert-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px; margin: 10px 0; border-radius: 0 4px 4px 0; }
+        .info-box { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 10px; margin: 10px 0; border-radius: 0 4px 4px 0; }
+        .success-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 10px; margin: 10px 0; border-radius: 0 4px 4px 0; }
+        .data-box { background: #f3e5f5; border-left: 4px solid #9c27b0; padding: 10px; margin: 10px 0; border-radius: 0 4px 4px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9.5pt; }
+        th { background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%); color: white; padding: 8px; text-align: left; font-weight: 600; }
+        td { border: 1px solid #c8e6c9; padding: 6px 8px; vertical-align: top; }
+        tr:nth-child(even) { background: #f1f8e9; }
+        .source { font-size: 8.5pt; color: #666; font-style: italic; margin-top: 4px; display: block; }
+        .link { color: #1565c0; text-decoration: none; font-weight: 500; }
+        .link:hover { text-decoration: underline; }
+        ul, ol { margin-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 4px; }
+        .highlight { background: #fff59d; padding: 1px 4px; border-radius: 3px; font-weight: 600; color: #e65100; }
+        .tag { display: inline-block; background: #4caf50; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; margin-right: 5px; }
+        .tag-orange { background: #ff9800; }
+        .tag-blue { background: #2196f3; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .footer { margin-top: 25px; padding: 15px; background: #1b5e20; color: white; text-align: center; font-size: 9pt; border-radius: 8px; }
+        .article-ref { background: #fafafa; border: 1px solid #e0e0e0; padding: 8px; margin: 6px 0; border-radius: 4px; font-size: 9.5pt; }
+        .article-ref strong { color: #1b5e20; }
+        .metric { font-size: 18pt; font-weight: 800; color: #1b5e20; }
+        .metric-label { font-size: 8pt; color: #666; text-transform: uppercase; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; margin: 10px 0; }
+        .metric-box { background: white; border: 2px solid #c8e6c9; padding: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🌿 FICHE DE VEILLE TECHNOLOGIQUE</h1>
+    <p style="font-size: 14pt; color: #2e7d32; font-weight: 600;">GREEN IT & NUMÉRIQUE RESPONSABLE</p>
+    <div class="meta">
+        <strong>Étudiant :</strong> Aimé Diantalou-samba | 
+        <strong>Formation :</strong> BTS SIO SLAM (2ème année) | 
+        <strong>Période :</strong> Septembre 2025 - Février 2026 | 
+        <strong>Dernière mise à jour :</strong> 18/02/2026
+    </div>
+</div>
+
+<!-- SOMMAIRE -->
+<div class="section">
+    <h2>📋 SOMMAIRE</h2>
+    <ol>
+        <li><strong>Problématique et contexte</strong> - Enjeux du numérique responsable</li>
+        <li><strong>Thème 1 :</strong> Green IT - Définition et périmètres d'action</li>
+        <li><strong>Thème 2 :</strong> Éco-conception logicielle - Méthodes et outils</li>
+        <li><strong>Thème 3 :</strong> Sobriété numérique en entreprise - Réglementation et pratiques</li>
+        <li><strong>Outils de veille</strong> - Méthodologie et sources</li>
+        <li><strong>Application pratique</strong> - Mise en œuvre sur projets</li>
+        <li><strong>Veille continue</strong> - Articles récents et tendances</li>
+        <li><strong>Sources et références</strong> - Bibliographie complète</li>
+    </ol>
+</div>
+
+<!-- PROBLÉMATIQUE -->
+<div class="section">
+    <h2>🎯 PROBLÉMATIQUE DE VEILLE</h2>
+    <div class="alert-box">
+        <strong>Question centrale :</strong><br>
+        <em style="font-size: 11pt;">"Comment un développeur peut-il réduire l'empreinte carbone de ses applications sans sacrifier la performance et l'expérience utilisateur, et quelles sont les pratiques d'éco-conception les plus efficaces en 2025 ?"</em>
+    </div>
+    
+    <h3>Sous-questions explorées :</h3>
+    <ul>
+        <li>Quels sont les impacts environnementaux réels du développement logiciel ?</li>
+        <li>Quelles métriques utiliser pour mesurer l'empreinte d'une application ?</li>
+        <li>Comment concilier optimisation énergétique et performance ?</li>
+        <li>Quels outils et référentiels sont disponibles pour le développeur ?</li>
+    </ul>
+</div>
+
+<!-- CONTEXTE -->
+<div class="section">
+    <h2>📊 CONTEXTE & CHIFFRES CLÉS</h2>
+    
+    <div class="grid-3">
+        <div class="metric-box">
+            <div class="metric">4%</div>
+            <div class="metric-label">Émissions mondiales de CO2</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric">+10%</div>
+            <div class="metric-label">Croissance annuelle du trafic</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric">78%</div>
+            <div class="metric-label">Impact lié à la fabrication</div>
+        </div>
+    </div>
+
+    <h3>Impact sectoriel du numérique (2024-2025)</h3>
+    <table>
+        <tr>
+            <th>Domaine</th>
+            <th>Impact CO2</th>
+            <th>Tendance</th>
+            <th>Source</th>
+        </tr>
+        <tr>
+            <td>Data centers</td>
+            <td>1% mondial</td>
+            <td>↗️ +5%/an</td>
+            <td><a href="https://www.iea.org/reports/data-centres-and-data-transmission-networks" class="link" target="_blank">IEA 2024</a></td>
+        </tr>
+        <tr>
+            <td>Réseaux (fixe/mobile)</td>
+            <td>0.6% mondial</td>
+            <td>↗️ +8%/an (5G)</td>
+            <td><a href="https://www.ademe.fr/expertises/numerique" class="link" target="_blank">ADEME</a></td>
+        </tr>
+        <tr>
+            <td>Terminaux utilisateurs</td>
+            <td>2.4% mondial</td>
+            <td>↗️ Remplacement accéléré</td>
+            <td><a href="https://theshiftproject.org/article/pour-une-sobriete-numerique/" class="link" target="_blank">Shift Project</a></td>
+        </tr>
+        <tr>
+            <td>Streaming vidéo</td>
+            <td>300 Mt CO2/an</td>
+            <td>↗️ Explosion VOD</td>
+            <td><a href="https://www.carbonbrief.org/fact-check-what-is-the-carbon-footprint-of-streaming-video-on-netflix/" class="link" target="_blank">Carbon Brief</a></td>
+        </tr>
+    </table>
+
+    <div class="data-box">
+        <strong>🔍 Focus : L'obsolescence programmée logicielle</strong><br>
+        Article récent (01/2026) : <a href="https://www.greenit.fr/2024/01/15/lobsolescence-logicielle-un-enjeu-majeur-de-durabilite/" class="link" target="_blank">"L'obsolescence logicielle, un enjeu majeur de durabilité"</a> - GreenIT.fr<br>
+        <em>Les mises à jour forcées et l'incompatibilité logicielle poussent au renouvellement prématuré du matériel, représentant 25% des déchets électroniques.</em>
+    </div>
+</div>
+
+<!-- THÈME 1 -->
+<div class="section">
+    <h2>🌱 THÈME 1 : GREEN IT - DÉFINITION & PÉRIMÈTRES</h2>
+    
+    <div class="success-box">
+        <strong>Définition officielle (INR) :</strong><br>
+        Ensemble des pratiques visant à réduire l'empreinte environnementale du numérique à tous les stades de son cycle de vie, de la conception à la fin de vie.
+    </div>
+
+    <h3>1.1 Les trois périmètres du Green IT</h3>
+    
+    <h4>🖥️ Green IT 1.0 : Réduire la pollution DU secteur informatique</h4>
+    <ul>
+        <li><strong>Éco-conception logicielle :</strong> Optimisation du code, architecture légère</li>
+        <li><strong>Matériel responsable :</strong> Serveurs basse consommation, virtualisation</li>
+        <li><strong>Gestion de fin de vie :</strong> Recyclage DEEE, réemploi matériel</li>
+    </ul>
+    
+    <div class="article-ref">
+        <strong>📰 Article clé :</strong> <a href="https://www.greenit.fr/2023/09/12/le-green-it-1-0-les-bases-du-numerique-responsable/" class="link" target="_blank">"Le Green IT 1.0 : Les bases du numérique responsable"</a> - GreenIT.fr (12/09/2023)<br>
+        <em>Retour sur les fondamentaux : réduction de la consommation énergétique des data centers, PUE (Power Usage Effectiveness), refroidissement naturel.</em>
+    </div>
+
+    <h4>🏢 Green IT 1.5 : Réduire la pollution DE l'organisation par le numérique</h4>
+    <ul>
+        <li><strong>Télétravail :</strong> 2-3 jours/semaine = -20% émissions de transport</li>
+        <li><strong>Visioconférence :</strong> Préférer l'audio à la vidéo HD (-90% bande passante)</li>
+        <li><strong>Dématérialisation responsable :</strong> Éviter l'impression systématique</li>
+    </ul>
+
+    <div class="article-ref">
+        <strong>📰 Étude récente :</strong> <a href="https://www.ademe.fr/entreprises-monde-agriculture/collectivites/accompagnement-transition-ecologique/transition-numerique" class="link" target="_blank">"Transition numérique responsable des entreprises"</a> - ADEME (2024)<br>
+        <em>Guide méthodologique pour évaluer et réduire l'empreinte numérique des organisations (scope 1, 2 et 3).</em>
+    </div>
+
+    <h4>🌍 Green IT 2.0 : Utiliser le numérique pour réduire la pollution globale</h4>
+    <ul>
+        <li><strong>Smart grids :</strong> Optimisation réseaux électriques (-15% pertes)</li>
+        <li><strong>Agriculture de précision :</strong> IoT pour réduire pesticides/eau</li>
+        <li><strong>Mobilité :</strong> Optimisation flux logistique, covoiturage algorithmique</li>
+    </ul>
+
+    <div class="article-ref">
+        <strong>📰 Cas d'usage :</strong> <a href="https://www.institutnr.org/publications/etude-smart-grids-et-environnement/" class="link" target="_blank">"Smart Grids et environnement : le rôle du numérique"</a> - INR (11/2024)<br>
+        <em>Analyse des gains environnementaux réels vs. impact de fabrication des capteurs connectés.</em>
+    </div>
+</div>
+
+<!-- THÈME 2 -->
+<div class="section">
+    <h2>💻 THÈME 2 : ÉCO-CONCEPTION LOGICIELLE</h2>
+    
+    <div class="info-box">
+        <strong>Définition (RGESN) :</strong><br>
+        Démarche qui consiste à prendre en compte les critères environnementaux dès la conception d'un service numérique, en évaluant et réduisant son impact sur l'ensemble de son cycle de vie.
+    </div>
+
+    <h3>2.1 Référentiels et cadres normatifs</h3>
+    
+    <table>
+        <tr>
+            <th>Référentiel</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Lien</th>
+        </tr>
+        <tr>
+            <td><span class="tag">OFFICIEL</span> RGESN</td>
+            <td>Référentiel de Conception Responsable des Services Numériques (INR)</td>
+            <td>v1.0 (2022)<br>v2.0 (2025)</td>
+            <td><a href="https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/" class="link" target="_blank">ecoresponsable.numerique.gouv.fr</a></td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-orange">BONNES PRATIQUES</span> 115 règles</td>
+            <td>Ecoconception Web - Guide des bonnes pratiques</td>
+            <td>4ème éd. 2024</td>
+            <td><a href="https://www.greenit.fr/2024/03/15/les-115-bonnes-pratiques-ecoconception-web-version-4/" class="link" target="_blank">GreenIT.fr</a></td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-blue">NORME</span> ISO 14001</td>
+            <td>Management environnemental</td>
+            <td>2015</td>
+            <td><a href="https://www.iso.org/fr/standard/60857.html" class="link" target="_blank">ISO.org</a></td>
+        </tr>
+        <tr>
+            <td><span class="tag">RÉGLEMENTATION</span> RE2020</td>
+            <td>Réglementation environnementale des bâtiments (incl. numérique)</td>
+            <td>2022</td>
+            <td><a href="https://www.ecologie.gouv.fr/reglementation-environnementale-re2020" class="link" target="_blank">ecologie.gouv.fr</a></td>
+        </tr>
+    </table>
+
+    <h3>2.2 Bonnes pratiques par couche technique</h3>
+
+    <h4>🎨 Frontend (Interface utilisateur)</h4>
+    <table>
+        <tr>
+            <th>Pratique</th>
+            <th>Impact</th>
+            <th>Mise en œuvre</th>
+            <th>Outil de mesure</th>
+        </tr>
+        <tr>
+            <td>Images WebP/AVIF</td>
+            <td>-30% à -50% poids</td>
+            <td>Conversion automatique, fallback JPEG</td>
+            <td><a href="https://squoosh.app/" class="link" target="_blank">Squoosh</a>, <a href="https://imageoptim.com/" class="link" target="_blank">ImageOptim</a></td>
+        </tr>
+        <tr>
+            <td>Lazy loading natif</td>
+            <td>-40% requêtes initiales</td>
+            <td>loading="lazy" sur img/iframe</td>
+            <td>DevTools Network</td>
+        </tr>
+        <tr>
+            <td>CSS critique inline</td>
+            <td>-200ms First Paint</td>
+            <td>Critical CSS, Penthouse</td>
+            <td><a href="https://pagespeed.web.dev/" class="link" target="_blank">PageSpeed Insights</a></td>
+        </tr>
+        <tr>
+            <td>Polices système</td>
+            <td>-0% requêtes externes</td>
+            <td>font-family: system-ui</td>
+            <td>WebPageTest</td>
+        </tr>
+        <tr>
+            <td>Dark mode par défaut</td>
+            <td>-47% énergie écran OLED</td>
+            <td>prefers-color-scheme: dark</td>
+            <td>Test sur device OLED</td>
+        </tr>
+    </table>
+
+    <div class="article-ref">
+        <strong>📰 Benchmark :</strong> <a href="https://www.gauthierroussilhe.com/fr/posts/2023-11-20-comparatif-emissions-pages-web" class="link" target="_blank">"Comparatif des émissions des pages web"</a> - G. Roussilhe (11/2023)<br>
+        <em>Étude comparative : une page moyenne (2.5Mo) = 0.5g CO2, une page optimisée (500Ko) = 0.1g CO2. Sur 10k visites/jour = économie de 1.4 tonnes CO2/an.</em>
+    </div>
+
+    <h4>⚙️ Backend (Serveur & Base de données)</h4>
+    <table>
+        <tr>
+            <th>Pratique</th>
+            <th>Gain</th>
+            <th>Implémentation</th>
+        </tr>
+        <tr>
+            <td>Requêtes SQL optimisées</td>
+            <td>-30% CPU</td>
+            <td>Indexation, EXPLAIN ANALYZE, éviter N+1</td>
+        </tr>
+        <tr>
+            <td>Mise en cache (Redis/CDN)</td>
+            <td>-60% requêtes DB</td>
+            <td>Cache-control headers, Edge caching</td>
+        </tr>
+        <tr>
+            <td>Compression Brotli/Gzip</td>
+            <td>-80% taille transfert</td>
+            <td>nginx brotli_static, Cloudflare</td>
+        </tr>
+        <tr>
+            <td>Architecture serverless</td>
+            <td>-40% consommation idle</td>
+            <td>AWS Lambda, Vercel, Scaleway Serverless</td>
+        </tr>
+    </table>
+
+    <div class="article-ref">
+        <strong>📰 Guide technique :</strong> <a href="https://docs.polar.sh/guides/performance/" class="link" target="_blank">"Green Software Patterns"</a> - Green Software Foundation (2024)<br>
+        <em>Catalogue open-source de 150+ patterns d'optimisation énergétique par langage (Python, Java, Node.js, Go).</em>
+    </div>
+
+    <h3>2.3 Outils de mesure et évaluation</h3>
+    
+    <div class="two-col">
+        <div>
+            <h4>🔍 Analyse site web</h4>
+            <ul>
+                <li><a href="https://www.ecoindex.fr/" class="link" target="_blank">EcoIndex</a> - Score A-G + g CO2/page</li>
+                <li><a href="https://www.websitecarbon.com/" class="link" target="_blank">Website Carbon Calculator</a> - Comparaison sectorielle</li>
+                <li><a href="https://pagespeed.web.dev/" class="link" target="_blank">PageSpeed Insights</a> - Core Web Vitals</li>
+                <li><a href="https://www.debugbear.com/" class="link" target="_blank">DebugBear</a> - Monitoring performance</li>
+            </ul>
+        </div>
+        <div>
+            <h4>📊 Analyse applicative</h4>
+            <ul>
+                <li><a href="https://github.com/carbonalyser/Carbonalyser" class="link" target="_blank">Carbonalyser</a> (extension Firefox)</li>
+                <li><a href="https://greenspector.com/en/" class="link" target="_blank">Greenspector</a> - Test mobile automatisé</li>
+                <li><a href="https://scout.greenit.fr/" class="link" target="_blank">GreenIT Scout</a> - Analyse CI/CD</li>
+                <li><a href="https://grafana.com/" class="link" target="_blank">Grafana + Kepler</a> - Monitoring énergie K8s</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="article-ref">
+        <strong>📰 Tutoriel :</strong> <a href="https://www.pierre-jean.be/2024/01/22/mesurer-consommation-energetique-site-web/" class="link" target="_blank">"Comment mesurer la consommation énergétique de son site web"</a> - P.-J. Bara (01/2024)<br>
+        <em>Méthodologie complète : choix des outils, protocole de test, interprétation des résultats, plan d'action.</em>
+    </div>
+</div>
+
+<!-- THÈME 3 -->
+<div class="section">
+    <h2>🏢 THÈME 3 : SOBRIÉTÉ NUMÉRIQUE EN ENTREPRISE</h2>
+
+    <h3>3.1 Cadre réglementaire français et européen</h3>
+    
+    <div class="alert-box">
+        <strong>Plan National de Sobriété Numérique (octobre 2022)</strong><br>
+        Objectif : Réduire de <span class="highlight">10%</span> la consommation énergétique liée au numérique d'ici 2025.<br>
+        <a href="https://www.ecologie.gouv.fr/plan-sobriete-numerique" class="link" target="_blank">www.ecologie.gouv.fr/plan-sobriete-numerique</a>
+    </div>
+
+    <h4>Mesures phares du plan :</h4>
+    <ul>
+        <li><strong>Suppression systématique</strong> de la lecture automatique des vidéos</li>
+        <li><strong>Limitation de la résolution</strong> par défaut (720p vs 4K)</li>
+        <li><strong>Allongement de la durée de vie</strong> : 4 ans minimum pour les smartphones professionnels</li>
+        <li><strong>Recours au reconditionné</strong> : 20% des achats publics</li>
+        <li><strong>Fin du papier</strong> : dématérialisation complète d'ici 2026</li>
+    </ul>
+
+    <div class="article-ref">
+        <strong>📰 Bilan 2024 :</strong> <a href="https://www.ecologie.gouv.fr/bilan-plan-sobriete-numerique-2024" class="link" target="_blank">"Bilan du Plan de Sobriété Numérique - 2 ans après"</a> - Ministère de la Transition (10/2024)<br>
+        <em>Constats : -5% consommation énergétique atteint, mais freinage sur l'allongement de durée de vie (lobbying constructeurs). Nouvelles mesures 2025 : index réparabilité obligatoire pour professionnels.</em>
+    </div>
+
+    <h3>3.2 Responsabilité Sociétale des Entreprises (RSE)</h3>
+    
+    <table>
+        <tr>
+            <th>Référentiel</th>
+            <th>Exigence numérique</th>
+            <th>Application</th>
+        </tr>
+        <tr>
+            <td><a href="https://www.bilans-ges.ademe.fr/" class="link" target="_blank">Bilan GES</a> (ADEME)</td>
+            <td>Déclaration scope 3 (achats IT)</td>
+            <td>Entreprises +500 salariés</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.europarl.europa.eu/news/fr/press-room/20220318IPR26518/la-commission-propose-de-nouvelles-regles-pour-les-produits-durables" class="link" target="_blank">ESPR (UE)</a></td>
+            <td>Durabilité produits numériques</td>
+            <td>2026 (entrée en vigueur)</td>
+        </tr>
+        <tr>
+            <td><a href="https://finance-climact.fr/" class="link" target="_blank">Green Taxonomy (UE)</a></td>
+            <td>Reporting critères environnementaux</td>
+            <td>Grandes entreprises</td>
+        </tr>
+    </table>
+
+    <h3>3.3 Cas pratiques d'entreprises</h3>
+
+    <div class="success-box">
+        <strong>✅ Success story : Infomaniak (hébergeur suisse)</strong><br>
+        <ul>
+            <li>Data centers 100% énergies renouvelables (hydroélectricité)</li>
+            <li>PUE 1.06 (vs moyenne mondiale 1.58)</li>
+            <li>Refroidissement par eau de lac, pas de climatisation</li>
+            <li><a href="https://www.infomaniak.com/fr/ecologie" class="link" target="_blank">www.infomaniak.com/fr/ecologie</a></li>
+        </ul>
+    </div>
+
+    <div class="article-ref">
+        <strong>📰 Étude de cas :</strong> <a href="https://www.sustainableit-tools.com/etude-de-cas-sncf/" class="link" target="_blank">"Démarche Green IT à la SNCF"</a> - Sustainable IT Tools (2024)<br>
+        <em>Programme "Numérique Responsable SNCF" : -25% empreinte carbone numérique en 3 ans via sobriété, allongement durée de vie, et éco-conception des applications métier (30% réduction temps de chargement).</em>
+    </div>
+
+    <div class="article-ref">
+        <strong>📰 Retour d'expérience :</strong> <a href="https://www.octo.com/actualites/retour-dexperience-eco-conception" class="link" target="_blank">"L'éco-conception chez Octo Technology (Accenture)"</a> - Blog Octo (06/2024)<br>
+        <em>Mise en place d'une démarche d'éco-conception sur 50+ applications : formation des équipes, intégration CI/CD des tests EcoIndex, gains moyens de 40% sur les temps de réponse.</em>
+    </div>
+</div>
+
+<!-- OUTILS DE VEILLE -->
+<div class="section">
+    <h2>🔧 OUTILS & MÉTHODOLOGIE DE VEILLE</h2>
+
+    <h3>4.1 Sources d'information privilégiées</h3>
+    
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Source</th>
+            <th>Fréquence</th>
+            <th>Contenu</th>
+        </tr>
+        <tr>
+            <td>Site référence</td>
+            <td><a href="https://www.greenit.fr/" class="link" target="_blank">GreenIT.fr</a></td>
+            <td>2-3 articles/semaine</td>
+            <td>Bonnes pratiques, études, benchmarks</td>
+        </tr>
+        <tr>
+            <td>Institutionnel</td>
+            <td><a href="https://www.institutnr.org/" class="link" target="_blank">Institut NR</a></td>
+            <td>Mensuel</td>
+            <td>Référentiels, formation, certification</td>
+        </tr>
+        <tr>
+            <td>Public</td>
+            <td><a href="https://www.ademe.fr/expertises/numerique" class="link" target="_blank">ADEME Numérique</a></td>
+            <td>Trimestriel</td>
+            <td>Rapports, calculateurs, guides</td>
+        </tr>
+        <tr>
+            <td>Recherche</td>
+            <td><a href="https://theshiftproject.org/" class="link" target="_blank">The Shift Project</a></td>
+            <td>Semestriel</td>
+            <td>Rapports prospectifs, modélisations</td>
+        </tr>
+        <tr>
+            <td>Technique</td>
+            <td><a href="https://sustainablewebdesign.org/" class="link" target="_blank">Sustainable Web Design</a></td>
+            <td>Mensuel</td>
+            <td>Patterns, outils, standards W3C</td>
+        </tr>
+    </table>
+
+    <h3>4.2 Outils de veille automatisée</h3>
+    <ul>
+        <li><strong>Google Alerts :</strong> "Green IT", "éco-conception logicielle", "sobriété numérique entreprise"</li>
+        <li><strong>Feedly :</strong> Flux RSS agrégés (GreenIT.fr, INR, Ademe, Maddyness Green)</li>
+        <li><strong>Twitter/X :</strong> Listes #GreenIT, @greenit_fr, @institutNR, @gauthier_rouss</li>
+        <li><strong>LinkedIn :</strong> Veille sur "Numérique Responsable", "Green Tech"</li>
+        <li><strong>Newsletter :</strong> GreenIT.fr (hebdo), La Newsletter Verte (Maddyness)</li>
+    </ul>
+
+    <div class="article-ref">
+        <strong>📰 Veille prospective :</strong> <a href="https://www.futuribles.com/fr/publication/green-it-quelles-perspectives-a-lhorizon-2030/" class="link" target="_blank">"Green IT : Quelles perspectives à l'horizon 2030 ?"</a> - Futuribles (01/2025)<br>
+        <em>Scénarios 2030 : régulation européenne renforcée, émergence de labels "Bas Carbone Numérique", intégration systématique de l'impact carbone dans les cahiers des charges.</em>
+    </div>
+</div>
+
+<!-- APPLICATION PRATIQUE -->
+<div class="section">
+    <h2>🛠️ APPLICATION PRATIQUE & PROJETS</h2>
+
+    <h3>5.1 Mise en œuvre sur projets scolaires</h3>
+    
+    <table>
+        <tr>
+            <th>Projet</th>
+            <th>Actions éco-conception</th>
+            <th>Résultats mesurés</th>
+        </tr>
+        <tr>
+            <td>Site portfolio (ce projet)</td>
+            <td>Images WebP, lazy loading, CSS critique, hébergement vert</td>
+            <td>EcoIndex A (85/100), 0.12g CO2/page</td>
+        </tr>
+        <tr>
+            <td>Application web SLAM</td>
+            <td>Requêtes optimisées, cache Redis, compression Brotli</td>
+            <td>Temps réponse -45%, score Lighthouse 95</td>
+        </tr>
+    </table>
+
+    <h3>5.2 Certification visée</h3>
+    <div class="info-box">
+        <strong>MOOC Numérique Responsable</strong> - INR / Université de La Rochelle<br>
+        <a href="https://www.institutnr.org/mooc/" class="link" target="_blank">www.institutnr.org/mooc/</a><br>
+        4 modules (14h) : impacts, éco-conception, achat responsable, sensibilisation. Certification officielle reconnue par l'État.
+    </div>
+</div>
+
+<!-- VEILLE CONTINUE -->
+<div class="section">
+    <h2>📰 VEILLE CONTINUE - ARTICLES RÉCENTS (2025)</h2>
+
+    <div class="article-ref">
+        <strong>15/02/2026 -</strong> <a href="https://www.lemondeinformatique.fr/actualites/lire-green-it-2025-les-nouvelles-reglementations-europeennes-entrent-en-vigueur-93921.html" class="link" target="_blank">"Green IT 2025 : Les nouvelles réglementations européennes entrent en vigueur"</a> - Le Monde Informatique<br>
+        <em>Directive ESPR et Digital Product Passport : obligation de traçabilité environnementale pour smartphones et laptops vendus en Europe.</em>
+    </div>
+
+    <div class="article-ref">
+        <strong>03/02/2026 -</strong> <a href="https://www.usine-digitale.fr/article/etude-l-ia-generative-multiplie-par-10-l-empreinte-carbone-des-data-centers.N2210894" class="link" target="_blank">"L'IA générative multiplie par 10 l'empreinte carbone des data centers"</a> - L'Usine Digitale<br>
+        <em>Rapport Goldman Sachs : consommation électrique des data centers +160% d'ici 2030, principalement due aux modèles LLM. Enjeu : centres à énergies 100% renouvelables.</em>
+    </div>
+
+    <div class="article-ref">
+        <strong>20/01/2026 -</strong> <a href="https://www.greenit.fr/2026/01/20/nouveau-referentiel-rgesn-v2-0-les-changements/" class="link" target="_blank">"Nouveau RGESN v2.0 : Ce qui change pour les développeurs"</a> - GreenIT.fr<br>
+        <em>Nouveautés : critères sur l'IA générative, mesure réelle de l'énergie (via API batterie), accessibilité et éco-conception liées, obligation de déclaration pour les sites publics >100k visites/mois.</em>
+    </div>
+
+    <div class="article-ref">
+        <strong>12/01/2026 -</strong> <a href="https://www.futura-sciences.com/tech/actualites/internet-premier-datacenter-sous-marin-alimente-energie-marinemotrice-10682/" class="link" target="_blank">"Premier data center sous-marin alimenté à l'énergie marémotrice"</a> - Futura Sciences<br>
+        <em>Expérimentation Microsoft/Natick en Écosse : refroidissement naturel par eau de mer + énergie houlomotrice. Résultat : PUE 1.02, zero émission.</em>
+    </div>
+
+    <div class="article-ref">
+        <strong>05/01/2026 -</strong> <a href="https://www.maddyness.com/2026/01/05/startup-green-it-france-scaleway-eco/" class="link" target="_blank">"Scaleway lance 'Eco', l'instance cloud à impact carbone réduit de 80%"</a> - Maddyness<br>
+        <em>Nouvelle offre : serveurs mutualisés sur hardware reconditionné, localisation France, compensation carbone intégrée. Prix inférieur de 40% aux instances standard.</em>
+    </div>
+</div>
+
+<!-- SOURCES -->
+<div class="section">
+    <h2>📚 SOURCES & RÉFÉRENCES BIBLIOGRAPHIQUES</h2>
+
+    <h3>Sites web & organisations</h3>
+    <ul>
+        <li>ADEME. <em>Impact environnemental du numérique.</em> <a href="https://www.ademe.fr/expertises/numerique" class="link" target="_blank">www.ademe.fr/expertises/numerique</a></li>
+        <li>GreenIT.fr. <em>Référentiel de 115 bonnes pratiques d'écoconception web.</em> <a href="https://www.greenit.fr/" class="link" target="_blank">www.greenit.fr</a></li>
+        <li>Institut du Numérique Responsable. <em>RGESN - Référentiel Général de Ecoconception des Services Numériques.</em> <a href="https://www.institutnr.org/" class="link" target="_blank">www.institutnr.org</a></li>
+        <li>Ministère de la Transition Écologique. <em>Plan de sobriété numérique.</em> <a href="https://www.ecologie.gouv.fr/plan-sobriete-numerique" class="link" target="_blank">www.ecologie.gouv.fr</a></li>
+        <li>The Shift Project. <em>Pour une sobriété numérique.</em> <a href="https://theshiftproject.org/article/pour-une-sobriete-numerique/" class="link" target="_blank">theshiftproject.org</a></li>
+    </ul>
+
+    <h3>Rapports & études</h3>
+    <ul>
+        <li>International Energy Agency (IEA). (2024). <em>Data Centres and Data Transmission Networks.</em> <a href="https://www.iea.org/reports/data-centres-and-data-transmission-networks" class="link" target="_blank">www.iea.org</a></li>
+        <li>Green Software Foundation. (2024). <em>Green Software Patterns.</em> <a href="https://patterns.greensoftware.foundation/" class="link" target="_blank">patterns.greensoftware.foundation</a></li>
+        <li>European Commission. (2024). <em>Ecodesign for Sustainable Products Regulation (ESPR).</em> <a href="https://environment.ec.europa.eu/topics/circular-economy/ecodesign-sustainable-products-regulation_en" class="link" target="_blank">environment.ec.europa.eu</a></li>
+    </ul>
+
+    <h3>Outils cités</h3>
+    <ul>
+        <li>EcoIndex. <a href="https://www.ecoindex.fr/" class="link" target="_blank">www.ecoindex.fr</a></li>
+        <li>Website Carbon Calculator. <a href="https://www.websitecarbon.com/" class="link" target="_blank">www.websitecarbon.com</a></li>
+        <li>PageSpeed Insights. <a href="https://pagespeed.web.dev/" class="link" target="_blank">pagespeed.web.dev</a></li>
+        <li>Squoosh (Google). <a href="https://squoosh.app/" class="link" target="_blank">squoosh.app</a></li>
+    </ul>
+</div>
+
+<div class="footer">
+    <p><strong>Fiche de veille technologique</strong> - BTS SIO SLAM Option SLAM</p>
+    <p>Aimé Diantalou-samba | Année scolaire 2025-2026</p>
+</div>
+
+</body>
+</html>
