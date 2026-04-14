@@ -7,33 +7,60 @@
     <meta name="description" content="Découvrez mes projets de développement - Portfolio BTS SIO SLAM">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 
-
     <style>
     /* ============================================
-       1. CONTENEUR PRINCIPAL DE LA PAGE
+       CYBERPUNK VARIABLES & RESET
        ============================================ */
     
-    /* Section principale des projets - positionnement et fond */
+    :root {
+        --primary-color: #3B5F8A;
+        --primary-glow: #00d4ff;
+        --secondary-color: #00d4ff;
+        --accent-color: #ff00ff;
+        --dark-bg: #0a0e27;
+        --neon-blue: #00d4ff;
+        --neon-pink: #ff00ff;
+        --neon-purple: #bf00ff;
+        --cyber-yellow: #ffee00;
+        --grid-color: rgba(0, 212, 255, 0.1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Rajdhani', sans-serif;
+        background-color: var(--dark-bg);
+        color: #fff;
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, .cyber-font {
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* ============================================
+       1. CONTENEUR PRINCIPAL CYBERPUNK
+       ============================================ */
+    
     #projets-page {
         position: relative;
         padding: 120px 0 80px;
         min-height: 60vh;
         overflow: hidden;
-        background: none;
+        background: var(--dark-bg);
     }
-    
-    /* FIN - Conteneur principal */
 
-
-    /* ============================================
-       2. IMAGE DE FOND ET OVERLAY
-       ============================================ */
-    
-    /* Image de fond avec effet parallax */
+    /* Grid background effect */
     #projets-page::before {
         content: '';
         position: absolute;
@@ -41,15 +68,21 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url('images projets jeux.jpg');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        transform: none;
-        z-index: -2; /* Derrière l'overlay */
+        background-image: 
+            linear-gradient(var(--grid-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+        background-size: 50px 50px;
+        background-position: center center;
+        animation: gridMove 20s linear infinite;
+        z-index: 0;
     }
 
-    /* Overlay dégradé pour assombrir l'image et améliorer la lisibilité */
+    @keyframes gridMove {
+        0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+        100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+    }
+
+    /* Scanline effect */
     #projets-page::after {
         content: '';
         position: absolute;
@@ -58,313 +91,183 @@
         right: 0;
         bottom: 0;
         background: linear-gradient(
-            135deg, 
-            rgba(59, 95, 138, 0.8) 0%, 
-            rgba(15, 23, 42, 0.85) 100%
+            to bottom,
+            transparent 50%,
+            rgba(0, 212, 255, 0.03) 50%
         );
-        z-index: -1; /* Au-dessus de l'image mais sous le contenu */
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 1;
+        animation: scanline 8s linear infinite;
     }
-    
-    /* FIN - Image de fond et overlay */
 
+    @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
 
     /* ============================================
-       3. CONTENU ET EN-TÊTE DE SECTION
+       2. GLITCH EFFECT HEADER
        ============================================ */
     
-    /* Conteneur de contenu - positionné au-dessus du fond */
-    #projets-page .container {
-        position: relative;
-        z-index: 1;
-    }
-    
-    /* En-tête de section centré */
-    #projets-page .section-header {
+    .section-header {
         text-align: center;
         margin-bottom: 50px;
+        position: relative;
+        z-index: 2;
     }
-    
-    /* Titre de la section en blanc */
-    #projets-page .section-header h2 {
-        color: #ffffff;
+
+    .section-header h2 {
+        font-size: 3rem;
+        color: #fff;
+        position: relative;
+        display: inline-block;
+        text-shadow: 
+            0 0 10px var(--neon-blue),
+            0 0 20px var(--neon-blue),
+            0 0 40px var(--neon-blue);
+        animation: glitch 3s infinite;
     }
-    
-    /* Texte d'introduction centré */
+
+    @keyframes glitch {
+        0%, 90%, 100% { 
+            text-shadow: 
+                0 0 10px var(--neon-blue),
+                0 0 20px var(--neon-blue),
+                0 0 40px var(--neon-blue);
+            transform: translate(0);
+        }
+        92% { 
+            text-shadow: 
+                -2px 0 var(--neon-pink),
+                2px 0 var(--neon-blue);
+            transform: translate(-2px);
+        }
+        94% { 
+            text-shadow: 
+                2px 0 var(--neon-pink),
+                -2px 0 var(--neon-blue);
+            transform: translate(2px);
+        }
+        96% { 
+            text-shadow: 
+                -1px 0 var(--neon-pink),
+                1px 0 var(--neon-blue);
+            transform: translate(0);
+        }
+    }
+
+    .underline {
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+        margin: 20px auto;
+        position: relative;
+        box-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    .underline::before,
+    .underline::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        width: 10px;
+        height: 7px;
+        background: var(--neon-blue);
+        box-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    .underline::before { left: 0; }
+    .underline::after { right: 0; }
+
     .projets-intro {
         max-width: 800px;
         margin: 0 auto 50px;
         text-align: center;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.2rem;
         line-height: 1.8;
+        position: relative;
+        z-index: 2;
+        border-left: 2px solid var(--neon-blue);
+        border-right: 2px solid var(--neon-blue);
+        padding: 0 20px;
+        background: rgba(0, 212, 255, 0.05);
     }
-    
-    /* FIN - Contenu et en-tête */
-
 
     /* ============================================
-       4. FILTRES DE CATÉGORIES
+       3. CYBERPUNK FILTERS
        ============================================ */
     
-    /* Conteneur des boutons de filtrage */
     .projets-filtres {
         display: flex;
         justify-content: center;
         gap: 15px;
         margin-bottom: 40px;
         flex-wrap: wrap;
-    }
-    
-    /* Bouton de filtre individuel */
-    .filtre-btn {
-        padding: 10px 25px;
-        border: 2px solid rgba(255, 255, 255, 0.5);
-        background: transparent;
-        color: #ffffff;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-    
-    /* État hover et actif du bouton de filtre */
-    .filtre-btn:hover,
-    .filtre-btn.active {
-        background: var(--secondary-color);
-        border-color: var(--secondary-color);
-        color: rgb(255, 254, 254);
-    }
-    
-    /* FIN - Filtres */
-
-
-    /* ============================================
-       5. GRILLE DES PROJETS
-       ============================================ */
-    
-    /* Grille responsive des cartes projet */
-    .projets-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-    }
-    
-    /* FIN - Grille des projets */
-
-
-    /* ============================================
-       6. CARTE PROJET STANDARD
-       ============================================ */
-    
-    /* Carte individuelle de projet */
-    .projet-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    /* Effet de levitation au survol de la carte */
-    .projet-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-    }
-    
-    /* FIN - Carte projet standard */
-
-
-    /* ============================================
-       7. IMAGE ET OVERLAY DE LA CARTE
-       ============================================ */
-    
-    /* Conteneur de l'image du projet */
-    .projet-image {
         position: relative;
-        height: 220px;
+        z-index: 2;
+    }
+
+    .filtre-btn {
+        padding: 12px 25px;
+        border: 2px solid var(--primary-color);
+        background: transparent;
+        color: #fff;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+        transition: all 0.3s;
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
     }
-    
-    /* Image du projet - remplit le conteneur */
-    .projet-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-    }
-    
-    /* Zoom de l'image au survol de la carte */
-    .projet-card:hover .projet-image img {
-        transform: scale(1.1);
-    }
-    
-    /* Overlay sombre avec les liens - apparait au survol */
-    .projet-overlay {
+
+    .filtre-btn::before {
+        content: '';
         position: absolute;
         top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.7);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        opacity: 0;
-        transition: opacity 0.3s;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        transition: left 0.5s;
     }
-    
-    /* Affichage de l'overlay au survol */
-    .projet-card:hover .projet-overlay {
-        opacity: 1;
-    }
-    
-    /* FIN - Image et overlay */
 
+    .filtre-btn:hover::before,
+    .filtre-btn.active::before {
+        left: 100%;
+    }
 
-    /* ============================================
-       8. LIENS ET BADGE TYPE DANS L'OVERLAY
-       ============================================ */
-    
-    /* Bouton lien circulaire dans l'overlay */
-    .projet-link {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary-color);
-        font-size: 1.2rem;
-        transform: translateY(20px);
-        transition: all 0.3s;
+    .filtre-btn:hover,
+    .filtre-btn.active {
+        background: var(--primary-color);
+        border-color: var(--neon-blue);
+        box-shadow: 
+            0 0 10px var(--neon-blue),
+            inset 0 0 10px rgba(0, 212, 255, 0.2);
+        transform: translateY(-2px);
     }
-    
-    /* Animation d'entrée des liens au survol */
-    .projet-card:hover .projet-link {
-        transform: translateY(0);
-    }
-    
-    /* Effet hover sur le bouton lien */
-    .projet-link:hover {
-        background: var(--secondary-color);
-        color: white;
-    }
-    
-    /* Badge indiquant le type de projet */
-    .projet-type {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        background: rgba(255,255,255,0.95);
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--primary-color);
-    }
-    
-    /* FIN - Liens et badge type */
-
 
     /* ============================================
-       9. CONTENU TEXTUEL DE LA CARTE
+       4. PROJET EN VEDETTE CYBERPUNK
        ============================================ */
     
-    /* Zone de contenu sous l'image */
-    .projet-content {
-        padding: 30px;
-    }
-    
-    /* Titre du projet */
-    .projet-content h3 {
-        font-size: 1.3rem;
-        color: var(--text-dark);
-        margin-bottom: 10px;
-    }
-    
-    /* Description du projet */
-    .projet-content p {
-        color: #64748b;
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 20px;
-    }
-    
-    /* FIN - Contenu textuel */
-
-
-    /* ============================================
-       10. TECHNOLOGIES ET FOOTER DE LA CARTE
-       ============================================ */
-    
-    /* Liste des tags de technologies */
-    .projet-techs {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-    }
-    
-    /* Tag de technologie individuel */
-    .tech-tag {
-        background: #f1f5f9;
-        color: var(--primary-color);
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-    
-    /* Footer de la carte avec date et statut */
-    .projet-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 20px;
-        border-top: 1px solid #e2e8f0;
-    }
-    
-    /* Date du projet */
-    .projet-date {
-        font-size: 0.85rem;
-        color: #94a3b8;
-    }
-    
-    /* Statut du projet (terminé ou en cours) */
-    .projet-statut {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 0.85rem;
-        font-weight: 600;
-    }
-    
-    /* Couleur verte pour projet terminé */
-    .projet-statut.termine {
-        color: #10b981;
-    }
-    
-    /* Couleur orange pour projet en cours */
-    .projet-statut.en-cours {
-        color: #f59e0b;
-    }
-    
-    /* FIN - Technologies et footer */
-
-
-    /* ============================================
-       11. PROJET EN VEDETTE (MIS EN AVANT)
-       ============================================ */
-    
-    /* Section spéciale pour le projet mis en avant */
     .projet-vedette {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: none;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
+        background: rgba(10, 14, 39, 0.8);
+        border: 1px solid var(--neon-blue);
+        box-shadow: 
+            0 0 20px rgba(0, 212, 255, 0.3),
+            inset 0 0 20px rgba(0, 212, 255, 0.1);
+        border-radius: 0;
+        clip-path: polygon(
+            0 20px, 20px 0, 
+            calc(100% - 20px) 0, 100% 20px,
+            100% calc(100% - 20px), calc(100% - 20px) 100%,
+            20px 100%, 0 calc(100% - 20px)
+        );
         padding: 40px;
         margin-bottom: 40px;
         color: white;
@@ -372,67 +275,540 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
         align-items: center;
+        position: relative;
+        z-index: 2;
     }
-    
-    /* Titre du projet en vedette */
+
+    .projet-vedette::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink), var(--neon-blue));
+        z-index: -1;
+        clip-path: polygon(
+            0 20px, 20px 0, 
+            calc(100% - 20px) 0, 100% 20px,
+            100% calc(100% - 20px), calc(100% - 20px) 100%,
+            20px 100%, 0 calc(100% - 20px)
+        );
+        opacity: 0.5;
+    }
+
     .projet-vedette-content h3 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-bottom: 15px;
+        color: #fff;
+        text-shadow: 0 0 10px var(--neon-blue);
+        font-family: 'Orbitron', sans-serif;
     }
-    
-    /* Description du projet en vedette */
+
     .projet-vedette-content p {
         opacity: 0.9;
         line-height: 1.8;
         margin-bottom: 25px;
+        font-size: 1.1rem;
+        border-left: 3px solid var(--neon-pink);
+        padding-left: 15px;
     }
-    
-    /* Conteneur de l'image du projet vedette */
+
     .projet-vedette-image {
-        border-radius: 15px;
+        position: relative;
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        clip-path: polygon(
+            10% 0, 100% 0, 
+            100% 90%, 90% 100%, 
+            0 100%, 0 10%
+        );
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
     }
-    
-    /* Image du projet vedette */
+
+    .projet-vedette-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transform: skewX(-25deg);
+        animation: shine 3s infinite;
+        z-index: 1;
+    }
+
+    @keyframes shine {
+        0% { left: -100%; }
+        20% { left: 200%; }
+        100% { left: 200%; }
+    }
+
     .projet-vedette-image img {
         width: 100%;
         height: auto;
         display: block;
+        filter: contrast(1.1) saturate(1.2);
     }
-    
-    /* Bouton d'action du projet vedette */
+
+    /* BOUTONS PROJET PHARE */
+    .projet-vedette-buttons {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+
     .btn-vedette {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: var(--secondary-color);
-        color: white;
-        padding: 12px 30px;
-        border-radius: 30px;
+        background: transparent;
+        color: var(--neon-blue);
+        border: 2px solid var(--neon-blue);
+        padding: 15px 35px;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         font-weight: 600;
+        position: relative;
+        overflow: hidden;
         transition: all 0.3s;
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        text-decoration: none;
+        cursor: pointer;
     }
-    
-    /* Effet hover sur le bouton vedette */
-    .btn-vedette:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    
-    /* FIN - Projet en vedette */
 
+    .btn-vedette::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--neon-blue);
+        transition: left 0.3s;
+        z-index: -1;
+    }
+
+    .btn-vedette:hover::before {
+        left: 0;
+    }
+
+    .btn-vedette:hover {
+        color: var(--dark-bg);
+        box-shadow: 
+            0 0 20px var(--neon-blue),
+            0 0 40px var(--neon-blue);
+        transform: translateY(-3px);
+    }
+
+    .btn-vedette.secondary {
+        color: var(--neon-pink);
+        border-color: var(--neon-pink);
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    }
+
+    .btn-vedette.secondary::before {
+        background: var(--neon-pink);
+    }
+
+    .btn-vedette.secondary:hover {
+        box-shadow: 
+            0 0 20px var(--neon-pink),
+            0 0 40px var(--neon-pink);
+    }
+
+    .btn-vedette.third {
+        color: var(--cyber-yellow);
+        border-color: var(--cyber-yellow);
+        box-shadow: 0 0 15px rgba(255, 238, 0, 0.3);
+    }
+
+    .btn-vedette.third::before {
+        background: var(--cyber-yellow);
+    }
+
+    .btn-vedette.third:hover {
+        box-shadow: 
+            0 0 20px var(--cyber-yellow),
+            0 0 40px var(--cyber-yellow);
+    }
 
     /* ============================================
+       5. GRILLE & CARTES PROJETS CYBERPUNK
+       ============================================ */
     
-    /* Adaptation mobile pour le projet vedette */
+    .projets-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .projet-card {
+        background: rgba(10, 14, 39, 0.9);
+        border: 1px solid var(--primary-color);
+        border-radius: 0;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        clip-path: polygon(
+            0 15px, 15px 0, 
+            calc(100% - 15px) 0, 100% 15px,
+            100% calc(100% - 15px), calc(100% - 15px) 100%,
+            15px 100%, 0 calc(100% - 15px)
+        );
+    }
+
+    .projet-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        transition: left 0.5s;
+    }
+
+    .projet-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: var(--neon-blue);
+        box-shadow: 
+            0 0 30px rgba(0, 212, 255, 0.4),
+            0 0 60px rgba(0, 212, 255, 0.2);
+    }
+
+    .projet-card:hover::before {
+        left: 100%;
+        animation: borderFlow 2s linear infinite;
+    }
+
+    @keyframes borderFlow {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+    /* ============================================
+       6. IMAGES & OVERLAY CYBERPUNK
+       ============================================ */
+    
+    .projet-image {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-bg) 100%);
+    }
+
+    .projet-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s;
+        filter: grayscale(30%) contrast(1.1);
+    }
+
+    .projet-card:hover .projet-image img {
+        transform: scale(1.1);
+        filter: grayscale(0%) contrast(1.2) brightness(1.1);
+    }
+
+    .projet-type {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(0, 0, 0, 0.8);
+        border: 1px solid var(--neon-blue);
+        color: var(--neon-blue);
+        padding: 5px 15px;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        z-index: 2;
+    }
+
+    .projet-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 14, 39, 0.9);
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        border-bottom: 2px solid var(--neon-blue);
+    }
+
+    .projet-card:hover .projet-overlay {
+        opacity: 1;
+    }
+
+    .projet-link {
+        width: 55px;
+        height: 55px;
+        border: 2px solid var(--neon-blue);
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--neon-blue);
+        font-size: 1.3rem;
+        transform: translateY(30px) scale(0.8);
+        transition: all 0.3s;
+        clip-path: polygon(20% 0, 100% 0, 100% 80%, 80% 100%, 0 100%, 0 20%);
+        text-decoration: none;
+    }
+
+    .projet-card:hover .projet-link {
+        transform: translateY(0) scale(1);
+    }
+
+    .projet-link:hover {
+        background: var(--neon-blue);
+        color: var(--dark-bg);
+        box-shadow: 0 0 20px var(--neon-blue);
+        transform: scale(1.1);
+    }
+
+    /* ============================================
+       7. CONTENU & TECH TAGS CYBERPUNK
+       ============================================ */
+    
+    .projet-content {
+        padding: 30px;
+        background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(59, 95, 138, 0.1) 100%);
+    }
+
+    .projet-content h3 {
+        font-size: 1.4rem;
+        color: #fff;
+        margin-bottom: 12px;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    }
+
+    .projet-content p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        font-family: 'Rajdhani', sans-serif;
+    }
+
+    .projet-techs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .tech-tag {
+        background: rgba(0, 212, 255, 0.1);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        color: var(--neon-blue);
+        padding: 6px 14px;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        transition: all 0.3s;
+    }
+
+    .tech-tag:hover {
+        background: rgba(0, 212, 255, 0.3);
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* ============================================
+       8. FOOTER DE CARTE CYBERPUNK
+       ============================================ */
+    
+    .projet-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 212, 255, 0.2);
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.85rem;
+    }
+
+    .projet-date {
+        color: rgba(255, 255, 255, 0.6);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .projet-date i {
+        color: var(--neon-blue);
+    }
+
+    .projet-statut {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8rem;
+    }
+
+    .projet-statut.termine {
+        color: #00ff88;
+        text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+    }
+
+    .projet-statut.en-cours {
+        color: var(--cyber-yellow);
+        text-shadow: 0 0 5px rgba(255, 238, 0, 0.5);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+    }
+
+    /* ============================================
+       9. ANIMATIONS & EFFETS ADDITIONNELS
+       ============================================ */
+    
+    /* Binary rain effect in background */
+    .binary-rain {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.03;
+    }
+
+    .binary-column {
+        position: absolute;
+        top: -100%;
+        font-family: 'Orbitron', monospace;
+        font-size: 14px;
+        color: var(--neon-blue);
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(200vh); }
+    }
+
+    /* Holographic effect */
+    .hologram {
+        position: relative;
+    }
+
+    .hologram::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(0, 212, 255, 0.1) 0%,
+            transparent 50%,
+            rgba(255, 0, 255, 0.1) 100%
+        );
+        pointer-events: none;
+        mix-blend-mode: overlay;
+    }
+
+    /* ============================================
+       10. RESPONSIVE CYBERPUNK
+       ============================================ */
+    
     @media (max-width: 768px) {
         .projet-vedette {
             grid-template-columns: 1fr;
+            clip-path: polygon(
+                0 15px, 15px 0, 
+                calc(100% - 15px) 0, 100% 15px,
+                100% calc(100% - 15px), calc(100% - 15px) 100%,
+                15px 100%, 0 calc(100% - 15px)
+            );
+        }
+
+        .projet-vedette-buttons {
+            flex-direction: column;
+        }
+
+        .btn-vedette {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+        }
+
+        .projets-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .filtre-btn {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+        }
+
+        .projet-vedette-content h3 {
+            font-size: 1.5rem;
         }
     }
+
+    /* ============================================
+       11. SCROLLBAR CYBERPUNK
+       ============================================ */
     
-    /* FIN - Responsive */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 0;
+        border: 2px solid var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--neon-blue);
+        box-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    /* Selection color */
+    ::selection {
+        background: var(--neon-blue);
+        color: var(--dark-bg);
+    }
 
 </style>
 
@@ -480,6 +856,9 @@
 
     <!-- SECTION PROJETS -->
     <section id="projets-page">
+        <!-- Binary Rain Background -->
+        <div class="binary-rain" id="binaryRain"></div>
+
         <div class="container">
             <div class="section-header">
                 <h2>MES PROJETS</h2>
@@ -492,29 +871,40 @@
             </p>
 
             <!-- Projet en vedette -->
-            <div class="projet-vedette">
+            <div class="projet-vedette hologram">
                 <div class="projet-vedette-content">
-                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 15px; display: inline-block;">
-                        <i class="fas fa-star"></i> Projet phare
+                    <span style="background: rgba(0, 212, 255, 0.2); border: 1px solid var(--neon-blue); padding: 8px 20px; border-radius: 0; font-size: 0.85rem; margin-bottom: 20px; display: inline-block; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);">
+                        <i class="fas fa-star" style="color: var(--cyber-yellow);"></i> Projet phare
                     </span>
-                    <h3>Gestionnaire de Bibliothèque</h3>
+                    <h3>Application de Restauration Chinoise</h3>
                     <p>
-                        Application web complète de gestion de bibliothèque permettant la gestion des livres, 
-                        des emprunts, des utilisateurs et des réservations. Interface moderne avec dashboard 
-                        administrateur et espace membre.
+                        Plateforme web de restauration asiatique permettant la commande en ligne avec paiement sécurisé,
+                        gestion en temps réel du menu par l'administrateur, système de réservation de tables et espace client avec historique des commandes. 
+                        Interface inspirée de l'esthétique chinoise contemporaine.
                     </p>
-                    <div style="display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap;">
-                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">PHP</span>
-                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">MySQL</span>
-                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">JavaScript</span>
-                        <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">Bootstrap</span>
+                    <div style="display: flex; gap: 12px; margin-bottom: 30px; flex-wrap: wrap;">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Laravel</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Bootstrap</span>
                     </div>
-                    <a href="#" class="btn-vedette">
-                        <i class="fas fa-external-link-alt"></i> Voir le projet
-                    </a>
+                    
+                    <!-- BOUTONS PROJET PHARE -->
+                    <div class="projet-vedette-buttons">
+                        <a href="#" class="btn-vedette">
+                            <i class="fas fa-external-link-alt"></i> Voir le site
+                        </a>
+                        <a href="#" class="btn-vedette secondary">
+                            <i class="fab fa-github"></i> Voir le code
+                        </a>
+                        <a href="#" class="btn-vedette third">
+                            <i class="fas fa-file-powerpoint"></i> Présentation
+                        </a>
+                    </div>
                 </div>
                 <div class="projet-vedette-image">
-                    <img src="https://via.placeholder.com/600x400/3B5F8A/FFFFFF?text=Projet+Bibliothèque" alt="Projet Bibliothèque">
+                    <img src="apercu restaurant chinois.jpg" alt="Projet Restauration Chinoise">
                 </div>
             </div>
 
@@ -525,39 +915,40 @@
                 <button class="filtre-btn" data-filter="desktop">Desktop</button>
                 <button class="filtre-btn" data-filter="mobile">Mobile</button>
                 <button class="filtre-btn" data-filter="bdd">Base de données</button>
+                <button class="filtre-btn" data-filter="jeux">Jeux</button>
             </div>
 
             <!-- Grid des projets -->
             <div class="projets-grid">
-                <!-- Projet 1 -->
+                <!-- Projet 1 - Calculateur -->
                 <div class="projet-card" data-category="web">
                     <div class="projet-image">
-                        <img src="https://via.placeholder.com/400x220/10b981/FFFFFF?text=Site+E-commerce" alt="Projet E-commerce">
+                        <img src="calculateur image.jpg" alt="Projet Calculateur">
                         <span class="projet-type">Web</span>
                         <div class="projet-overlay">
-                            <a href="#" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
-                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                            <a href="https://winterpr19.github.io/Moncalculateur/" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
+                            <a href="https://github.com/WinterPR19/Moncalculateur" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="projet-content">
-                        <h3>Site E-commerce</h3>
-                        <p>Plateforme de vente en ligne avec panier d'achat, paiement sécurisé et espace administrateur.</p>
+                        <h3>Calculateur</h3>
+                        <p>Calculateur en ligne avec interface utilisateur intuitive et résultats en temps réel.</p>
                         <div class="projet-techs">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
                         </div>
                         <div class="projet-footer">
-                            <span class="projet-date"><i class="fas fa-calendar"></i> Déc. 2024</span>
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Fév. 2026</span>
                             <span class="projet-statut termine"><i class="fas fa-check-circle"></i> Terminé</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 2 -->
+                <!-- Projet 2 - Gestion de Stock -->
                 <div class="projet-card" data-category="desktop">
                     <div class="projet-image">
-                        <img src="https://via.placeholder.com/400x220/8b5cf6/FFFFFF?text=Gestion+Stock" alt="Projet Gestion Stock">
+                        <img src="https://via.placeholder.com/400x220/1a1f4b/00d4ff?text=Gestion+Stock" alt="Projet Gestion Stock">
                         <span class="projet-type">Desktop</span>
                         <div class="projet-overlay">
                             <a href="#" class="projet-link" title="Voir la démo"><i class="fas fa-play"></i></a>
@@ -579,10 +970,10 @@
                     </div>
                 </div>
 
-                <!-- Projet 3 -->
+                <!-- Projet 3 - API REST -->
                 <div class="projet-card" data-category="web">
                     <div class="projet-image">
-                        <img src="https://via.placeholder.com/400x220/0ea5e9/FFFFFF?text=API+REST" alt="Projet API">
+                        <img src="https://via.placeholder.com/400x220/0a0e27/ff00ff?text=API+REST" alt="Projet API">
                         <span class="projet-type">Web</span>
                         <div class="projet-overlay">
                             <a href="#" class="projet-link" title="Documentation"><i class="fas fa-book"></i></a>
@@ -599,15 +990,67 @@
                         </div>
                         <div class="projet-footer">
                             <span class="projet-date"><i class="fas fa-calendar"></i> Jan. 2025</span>
-                            <span class="projet-statut en-cours"><i class="fas fa-spinner"></i> En cours</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner fa-spin"></i> En cours</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 4 -->
+                <!-- NOUVEAU Projet 4 - E-commerce -->
+                <div class="projet-card" data-category="web">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/0a0e27/00ff88?text=E-Commerce" alt="Projet E-commerce">
+                        <span class="projet-type">Web</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Boutique en Ligne</h3>
+                        <p>Plateforme e-commerce complète avec panier d'achat, paiement Stripe et gestion des commandes.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Mars 2025</span>
+                            <span class="projet-statut termine"><i class="fas fa-check-circle"></i> Terminé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOUVEAU Projet 5 - Dashboard Analytics -->
+                <div class="projet-card" data-category="web">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/1a1f4b/ff6b00?text=Dashboard" alt="Projet Dashboard">
+                        <span class="projet-type">Web</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Tableau de bord interactif avec visualisation de données en temps réel et graphiques dynamiques.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Tailwind</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Avr. 2025</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner fa-spin"></i> En cours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 6 - App Météo -->
                 <div class="projet-card" data-category="mobile">
                     <div class="projet-image">
-                        <img src="https://via.placeholder.com/400x220/f59e0b/FFFFFF?text=App+Météo" alt="Projet Météo">
+                        <img src="https://via.placeholder.com/400x220/1a1f4b/ffee00?text=App+Météo" alt="Projet Météo">
                         <span class="projet-type">Mobile</span>
                         <div class="projet-overlay">
                             <a href="#" class="projet-link" title="Voir l'app"><i class="fas fa-mobile-alt"></i></a>
@@ -623,15 +1066,15 @@
                         </div>
                         <div class="projet-footer">
                             <span class="projet-date"><i class="fas fa-calendar"></i> Fév. 2025</span>
-                            <span class="projet-statut en-cours"><i class="fas fa-spinner"></i> En cours</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner fa-spin"></i> En cours</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 5 -->
+                <!-- Projet 7 - BDD Cinéma -->
                 <div class="projet-card" data-category="bdd">
                     <div class="projet-image">
-                        <img src="https://via.placeholder.com/400x220/ec4899/FFFFFF?text=Base+de+Données" alt="Projet BDD">
+                        <img src="https://via.placeholder.com/400x220/0a0e27/bf00ff?text=Base+de+Données" alt="Projet BDD">
                         <span class="projet-type">BDD</span>
                         <div class="projet-overlay">
                             <a href="#" class="projet-link" title="Voir le schéma"><i class="fas fa-database"></i></a>
@@ -653,14 +1096,89 @@
                     </div>
                 </div>
 
-                <!-- Projet 6 -->
+                <!-- NOUVEAU Projet 8 - Jeu Snake -->
+                <div class="projet-card" data-category="jeux">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/0a0e27/00ff00?text=Snake+Game" alt="Jeu Snake">
+                        <span class="projet-type">Jeux</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Jouer"><i class="fas fa-gamepad"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Snake Retro</h3>
+                        <p>Jeu Snake classique recréé en JavaScript avec système de score, niveaux croissants et effets sonores.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">HTML5 Canvas</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Jan. 2025</span>
+                            <span class="projet-statut termine"><i class="fas fa-check-circle"></i> Terminé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOUVEAU Projet 9 - Jeu Memory -->
+                <div class="projet-card" data-category="jeux">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/1a1f4b/ff00ff?text=Memory+Game" alt="Jeu Memory">
+                        <span class="projet-type">Jeux</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Jouer"><i class="fas fa-gamepad"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Memory Cyberpunk</h3>
+                        <p>Jeu de mémoire avec cartes thématiques cyberpunk, timer et tableau des meilleurs scores local.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Styled Components</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Fév. 2025</span>
+                            <span class="projet-statut termine"><i class="fas fa-check-circle"></i> Terminé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOUVEAU Projet 10 - RPG Textuel -->
+                <div class="projet-card" data-category="jeux">
+                    <div class="projet-image">
+                        <img src="https://via.placeholder.com/400x220/0a0e27/9d00ff?text=RPG+Textuel" alt="RPG Textuel">
+                        <span class="projet-type">Jeux</span>
+                        <div class="projet-overlay">
+                            <a href="#" class="projet-link" title="Jouer"><i class="fas fa-gamepad"></i></a>
+                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="projet-content">
+                        <h3>Cyber RPG</h3>
+                        <p>Jeu de rôle textuel narratif dans un univers cyberpunk avec choix multiples et système d'inventaire.</p>
+                        <div class="projet-techs">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                        <div class="projet-footer">
+                            <span class="projet-date"><i class="fas fa-calendar"></i> Déc. 2024</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner fa-spin"></i> En cours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 11 - Portfolio -->
                 <div class="projet-card" data-category="web">
                     <div class="projet-image">
                         <img src="apercu portefolio.jpg" alt="Projet Portfolio">
                         <span class="projet-type">Web</span>
                         <div class="projet-overlay">
-                            <a href="#" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
-                            <a href="#" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
+                            <a href="https://winterpr19.github.io/bts-sio-slam-portefolio/" class="projet-link" title="Voir le site"><i class="fas fa-eye"></i></a>
+                            <a href="https://github.com/WinterPR19/bts-sio-slam-portefolio" class="projet-link" title="Code source"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="projet-content">
@@ -673,7 +1191,7 @@
                         </div>
                         <div class="projet-footer">
                             <span class="projet-date"><i class="fas fa-calendar"></i> En continu</span>
-                            <span class="projet-statut en-cours"><i class="fas fa-spinner"></i> En évolution</span>
+                            <span class="projet-statut en-cours"><i class="fas fa-spinner fa-spin"></i> En évolution</span>
                         </div>
                     </div>
                 </div>
@@ -716,7 +1234,6 @@
 
             <div class="contact-form-side">
                 <form id="contactForm" class="form-compact" action="https://formspree.io/f/mnjbnenk" method="POST">
-                    <!-- Protection anti-spam cachée -->
                     <input type="text" name="_gotcha" style="display:none">
                     
                     <div class="form-row-compact">
@@ -726,27 +1243,24 @@
                     <input type="text" name="sujet" placeholder="Sujet" required>
                     <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
                     
-                    <!-- Case à cocher RGPD -->
-                    <!-- Case à cocher RGPD -->
-<div class="rgpd-consent">
-    <label class="rgpd-label">
-        <input type="checkbox" name="rgpd" id="rgpdCheck" required>
-        <span class="checkmark"></span>
-        <span class="rgpd-text">
-            J'accepte que mes données personnelles soient traitées conformément à la 
-            <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> 
-            et au RGPD. Ces données ne seront utilisées que pour répondre à ma demande.
-        </span>
-    </label>
-    <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité pour envoyer le message.</div>
-</div>
+                    <div class="rgpd-consent">
+                        <label class="rgpd-label">
+                            <input type="checkbox" name="rgpd" id="rgpdCheck" required>
+                            <span class="checkmark"></span>
+                            <span class="rgpd-text">
+                                J'accepte que mes données personnelles soient traitées conformément à la 
+                                <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> 
+                                et au RGPD. Ces données ne seront utilisées que pour répondre à ma demande.
+                            </span>
+                        </label>
+                        <div class="rgpd-error" id="rgpdError">Vous devez accepter la politique de confidentialité pour envoyer le message.</div>
+                    </div>
                     
                     <button type="submit" class="btn-send" id="submitBtn">
                         <span>Envoyer</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
                     
-                    <!-- Message de confirmation -->
                     <div id="formStatus" class="form-status"></div>
                 </form>
             </div>
@@ -773,7 +1287,6 @@
                     <a href="index.html#skills">Compétences</a>
                     <a href="veille.html">Veille</a>
                     <a href="#contact">Contact</a>
-                 
                 </nav>
                 
                 <div class="footer-copy">
@@ -785,7 +1298,7 @@
     </footer>
     <!-- FIN - Footer -->
      
- <!-- BOUTON BACK TO TOP -->
+    <!-- BOUTON BACK TO TOP -->
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
     <script src="main.js"></script>
@@ -796,17 +1309,15 @@
         
         filtreBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Active le bouton cliqué
                 filtreBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
                 const filter = btn.getAttribute('data-filter');
                 
-                // Filtre les projets
                 projetCards.forEach(card => {
                     if (filter === 'tous' || card.getAttribute('data-category') === filter) {
                         card.style.display = 'block';
-                        card.style.animation = 'fadeIn 0.5s';
+                        card.style.animation = 'fadeIn 0.5s, glitchIn 0.3s';
                     } else {
                         card.style.display = 'none';
                     }
@@ -814,15 +1325,65 @@
             });
         });
         
-        // Animation CSS
+        // Binary Rain Effect
+        function createBinaryRain() {
+            const container = document.getElementById('binaryRain');
+            const columns = Math.floor(window.innerWidth / 20);
+            
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.className = 'binary-column';
+                column.style.left = i * 20 + 'px';
+                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                column.style.animationDelay = Math.random() * 2 + 's';
+                
+                let binaryText = '';
+                for (let j = 0; j < 20; j++) {
+                    binaryText += Math.random() > 0.5 ? '1' : '0';
+                }
+                column.textContent = binaryText;
+                container.appendChild(column);
+            }
+        }
+
+        // Initialize effects
+        document.addEventListener('DOMContentLoaded', () => {
+            createBinaryRain();
+            
+            // Add hover sound effect simulation (visual feedback)
+            document.querySelectorAll('.projet-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
+            });
+        });
+
+        // Animation CSS supplémentaire
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fadeIn {
                 from { opacity: 0; transform: translateY(20px); }
                 to { opacity: 1; transform: translateY(0); }
             }
+            @keyframes glitchIn {
+                0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+                100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            }
+            .fa-spinner {
+                animation: fa-spin 2s infinite linear;
+            }
         `;
         document.head.appendChild(style);
+
+        // Reinitialize binary rain on resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                document.getElementById('binaryRain').innerHTML = '';
+                createBinaryRain();
+            }, 250);
+        });
     </script>
 </body>
 </html>
